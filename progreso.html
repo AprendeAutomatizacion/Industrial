@@ -24,6 +24,9 @@
         }
     </script>
     <style>
+        /* ==========================================
+           ESTILOS COMPLETOS
+           ========================================== */
         html { background-color: #0a0f1e; }
         html.light-mode { background-color: #f0f4f8; }
 
@@ -436,102 +439,24 @@
         }
 
         /* ==========================================
-           CORRECCIÓN MODO CLARO - COLORES OSCUROS
-           ========================================== */
-        body.light-mode {
-            color: #0f172a !important;
-        }
-
-        body.light-mode .text-slate-300 {
-            color: #1e293b !important;
-        }
-
-        body.light-mode .text-slate-400 {
-            color: #475569 !important;
-        }
-
-        body.light-mode .text-white {
-            color: #0f172a !important;
-        }
-
-        body.light-mode .text-cyan-400 {
-            color: #0e7490 !important;
-        }
-
-        body.light-mode .text-cyan-300 {
-            color: #0e7490 !important;
-        }
-
-        body.light-mode .text-amber-400 {
-            color: #b45309 !important;
-        }
-
-        body.light-mode .text-emerald-400 {
-            color: #047857 !important;
-        }
-
-        body.light-mode .text-purple-400 {
-            color: #6d28d9 !important;
-        }
-
-        body.light-mode .border-cyan-500\/20 {
-            border-color: rgba(14, 116, 144, 0.15) !important;
-        }
-
-        body.light-mode .bg-gradient-to-r.from-cyan-500\/5 {
-            background: #ffffff !important;
-            background-color: #ffffff !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-        }
-
-        body.light-mode .group:hover .border-cyan-400\/50 {
-            border-color: rgba(14, 116, 144, 0.3) !important;
-        }
-
-        body.light-mode .bg-gradient-to-r.from-transparent.via-cyan-400 {
-            background: linear-gradient(to right, transparent, #0e7490, transparent) !important;
-        }
-
-        body.light-mode .bg-gradient-to-r.from-cyan-500.via-purple-500.to-emerald-500 {
-            background: linear-gradient(to right, #0e7490, #6d28d9, #047857) !important;
-        }
-
-        body.light-mode .text-slate-500 {
-            color: #1e293b !important;
-        }
-
-        body.light-mode .text-slate-600 {
-            color: #1e293b !important;
-        }
-
-        body.light-mode .text-slate-700 {
-            color: #0f172a !important;
-        }
-
-        body.light-mode h1, body.light-mode h2, body.light-mode h3, 
-        body.light-mode h4, body.light-mode h5, body.light-mode h6 {
-            color: #0f172a !important;
-        }
-
-        /* ==========================================
-           ESTILOS DE LOGROS - CURSO CARD REUTILIZADOS
+           ESTILOS DE LOGROS - COPIA EXACTA DEL INDEX
            ========================================== */
         .course-card {
             background: var(--glass-bg);
             backdrop-filter: blur(10px) saturate(140%);
             -webkit-backdrop-filter: blur(10px) saturate(140%);
             border-radius: 1.5rem;
-            overflow: hidden;
+            overflow: visible !important;
             display: flex;
             flex-direction: column;
-            text-align: left;
+            text-align: center;
             cursor: default;
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             border: 1px solid var(--glass-border);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
                         inset 0 1px 0 rgba(255, 255, 255, 0.08);
             position: relative;
+            padding: 1.25rem;
         }
         .course-card::before {
             content: '';
@@ -553,50 +478,7 @@
             border-color: rgba(6, 182, 212, 0.25);
             z-index: 10;
         }
-        .course-card:hover::before {
-            opacity: 1;
-        }
-
-        .course-card-level-basico {
-            border: 1.5px solid rgba(6, 182, 212, 0.5);
-            box-shadow: 0 0 12px rgba(6, 182, 212, 0.12), 
-                        inset 0 0 30px rgba(6, 182, 212, 0.04);
-            background: linear-gradient(180deg, rgba(6, 182, 212, 0.05) 0%, rgba(8, 12, 33, 0.4) 100%);
-        }
-        .course-card-level-basico:hover {
-            border: 2px solid rgba(6, 182, 212, 0.8);
-            box-shadow: 0 0 20px rgba(6, 182, 212, 0.25), 
-                        0 8px 24px rgba(6, 182, 212, 0.15), 
-                        inset 0 0 40px rgba(6, 182, 212, 0.08);
-            background: linear-gradient(180deg, rgba(6, 182, 212, 0.1) 0%, rgba(8, 12, 33, 0.5) 100%);
-        }
-        .course-card-level-intermedio {
-            border: 1.5px solid rgba(139, 92, 246, 0.5);
-            box-shadow: 0 0 12px rgba(139, 92, 246, 0.12), 
-                        inset 0 0 30px rgba(139, 92, 246, 0.04);
-            background: linear-gradient(180deg, rgba(139, 92, 246, 0.05) 0%, rgba(8, 12, 33, 0.4) 100%);
-        }
-        .course-card-level-intermedio:hover {
-            border: 2px solid rgba(139, 92, 246, 0.8);
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.25), 
-                        0 8px 24px rgba(139, 92, 246, 0.15), 
-                        inset 0 0 40px rgba(139, 92, 246, 0.08);
-            background: linear-gradient(180deg, rgba(139, 92, 246, 0.1) 0%, rgba(8, 12, 33, 0.5) 100%);
-        }
-        .course-card-level-avanzado {
-            border: 1.5px solid rgba(245, 158, 11, 0.5);
-            box-shadow: 0 0 12px rgba(245, 158, 11, 0.12), 
-                        inset 0 0 30px rgba(245, 158, 11, 0.04);
-            background: linear-gradient(180deg, rgba(245, 158, 11, 0.05) 0%, rgba(8, 12, 33, 0.4) 100%);
-        }
-        .course-card-level-avanzado:hover {
-            border: 2px solid rgba(245, 158, 11, 0.8);
-            box-shadow: 0 0 20px rgba(245, 158, 11, 0.25), 
-                        0 8px 24px rgba(245, 158, 11, 0.15), 
-                        inset 0 0 40px rgba(245, 158, 11, 0.08);
-            background: linear-gradient(180deg, rgba(245, 158, 11, 0.1) 0%, rgba(8, 12, 33, 0.5) 100%);
-        }
-
+        .course-card:hover::before { opacity: 1; }
         .course-card .course-card-title {
             color: var(--text-primary);
             font-size: 1.125rem;
@@ -616,62 +498,45 @@
             transform: translateY(-8px) scale(1.01);
             z-index: 10;
         }
-        body.light-mode .course-card .course-card-title {
-            color: #334155 !important;
+        body.light-mode .course-card .course-card-title { color: #334155 !important; }
+        body.light-mode .course-card .text-slate-400 { color: #1e293b !important; }
+        body.light-mode .course-card .text-slate-500 { color: #1e293b !important; }
+
+        /* DECO - IDÉNTICO AL INDEX */
+        .course-card .card-deco {
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            width: 3rem;
+            height: 3rem;
+            z-index: 2;
+            pointer-events: none;
+            animation: pulseDeco 2s ease-in-out infinite;
+            opacity: 0.25;
+            overflow: visible;
         }
-        body.light-mode .course-card .text-slate-500 {
-            color: #1e293b !important;
+        .course-card .card-deco svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
         }
+
+        @keyframes pulseDeco {
+            0%, 100% { transform: scale(1); opacity: 0.25; }
+            50% { transform: scale(1.08); opacity: 0.4; }
+        }
+
+        /* Resaltado de nivel - ESTILOS DE BORDE POR COLOR */
+        .course-card.ring-2.ring-cyan-400 { box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.6), 0 0 30px rgba(6, 182, 212, 0.3); }
+        .course-card.ring-2.ring-amber-400 { box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.6), 0 0 30px rgba(251, 191, 36, 0.3); }
+        .course-card.ring-2.ring-purple-400 { box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.6), 0 0 30px rgba(139, 92, 246, 0.3); }
+        .course-card.ring-2.ring-amber-500 { box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.6), 0 0 30px rgba(245, 158, 11, 0.3); }
+
+        .course-card.scale-105 { transform: scale(1.02); }
 
         /* ==========================================
-           ESTILOS DE LOGROS - ACHIEVEMENT PULSE
-           ========================================== */
-        @keyframes achievementPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .course-card[data-logro] {
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .course-card[data-logro]:hover {
-            transform: translateY(-8px) scale(1.02);
-        }
-
-        .course-card[data-logro].ring-2 {
-            animation: achievementPulse 2s ease-in-out infinite;
-        }
-
-        .achievement-glow {
-            transition: all 0.5s ease;
-        }
-
-        .achievement-glow:hover {
-            filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.4));
-        }
-
-        /* ==========================================
-           ESTILOS PARA LOGROS OBTENIDOS - LISTA
-           ========================================== */
-        .achievement-item {
-            transition: all 0.3s ease;
-        }
-        .achievement-item:hover {
-            transform: translateX(4px);
-            border-color: rgba(6, 182, 212, 0.3);
-        }
-        .empty-achievements {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px dashed rgba(255, 255, 255, 0.08);
-        }
-        body.light-mode .empty-achievements {
-            background: rgba(0, 0, 0, 0.02);
-            border-color: rgba(0, 0, 0, 0.08);
-        }
-
-        /* ==========================================
-           ESTILOS PARA LA SECCIÓN DE LOGROS DEBAJO DE LA TARJETA
+           ESTILOS PARA LOGROS OBTENIDOS
            ========================================== */
         .logros-obtenidos-card {
             background: var(--glass-bg);
@@ -714,6 +579,50 @@
         body.light-mode .logro-item:hover {
             background: rgba(255, 255, 255, 0.65);
         }
+        .logro-item .logro-medal { font-size: 2.5rem; flex-shrink: 0; }
+        .logro-item .logro-nivel { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.15rem 0.6rem; border-radius: 9999px; }
+        .logro-item .logro-nivel.bronce { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.2); }
+        .logro-item .logro-nivel.plata { background: rgba(148, 163, 184, 0.15); color: #94a3b8; border: 1px solid rgba(148, 163, 184, 0.2); }
+        .logro-item .logro-nivel.oro { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.2); }
+        .logro-item .logro-nivel.leyenda { background: rgba(6, 182, 212, 0.15); color: #06b6d4; border: 1px solid rgba(6, 182, 212, 0.2); }
+
+        .empty-achievements {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed rgba(255, 255, 255, 0.08);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            text-align: center;
+        }
+        body.light-mode .empty-achievements {
+            background: rgba(0, 0, 0, 0.02);
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+
+        /* ==========================================
+           MODO CLARO - COLORES OSCUROS
+           ========================================== */
+        body.light-mode {
+            color: #0f172a !important;
+        }
+        body.light-mode .text-slate-300 { color: #1e293b !important; }
+        body.light-mode .text-slate-400 { color: #1e293b !important; }
+        body.light-mode .text-slate-500 { color: #1e293b !important; }
+        body.light-mode .text-slate-600 { color: #1e293b !important; }
+        body.light-mode .text-slate-700 { color: #0f172a !important; }
+        body.light-mode .text-white { color: #0f172a !important; }
+        body.light-mode .text-cyan-400 { color: #0e7490 !important; }
+        body.light-mode .text-purple-400 { color: #6d28d9 !important; }
+        body.light-mode .text-amber-400 { color: #b45309 !important; }
+        body.light-mode .text-emerald-400 { color: #047857 !important; }
+
+        body.light-mode .course-card {
+            background: rgba(255, 255, 255, 0.92) !important;
+            border-color: #cbd5e1 !important;
+        }
+        body.light-mode .course-card .course-card-title { color: #0f172a !important; }
+        body.light-mode .logro-item { background: rgba(255, 255, 255, 0.50); }
+        body.light-mode .logro-item:hover { background: rgba(255, 255, 255, 0.65); }
+        body.light-mode .logros-obtenidos-card { background: rgba(226, 232, 240, 0.65); border-color: rgba(255, 255, 255, 0.55); }
     </style>
 </head>
 <body id="progreso-page-body" class="custom-scrollbar">
@@ -767,7 +676,7 @@
 
     <div class="max-w-7xl mx-auto px-6 py-12">
         <main class="relative z-10 w-full">
-            <div class="grid grid-cols-1 gap-6 mb-8">
+            <div class="grid grid-cols-1 gap-8 mb-8">
                 <!-- ============================================== -->
                 <!-- SECCIÓN: DESCRIPCIÓN INTRODUCTORIA -->
                 <!-- ============================================== -->
@@ -798,12 +707,18 @@
                 <!-- ============================================== -->
                 <!-- SECCIÓN: GAMIFICACIÓN Y LOGROS -->
                 <!-- ============================================== -->
-                <section id="logros-motivacion" class="relative overflow-hidden" style="margin-bottom: 0;">
-                    <div class="max-w-full mx-auto relative z-10">
-                        <!-- GRID DE LOGROS (SIEMPRE VISIBLE) -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="logros-container">
+                <section id="logros-motivacion" class="relative overflow-visible" style="margin-bottom: 0; padding: 1rem 0.5rem 1.5rem 0.5rem;">
+                    <div class="max-w-full mx-auto relative z-10 px-2">
+                        <div class="w-full h-4"></div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8" id="logros-container">
                             <!-- Bronce -->
-                            <div class="course-card course-card-level-basico flex flex-col text-center p-5" data-logro="bronce">
+                            <div class="course-card border-amber-500/30" data-logro="bronce">
+                                <div class="card-deco">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#F59E0B" stroke="#D97706" stroke-width="0.5"/>
+                                    </svg>
+                                </div>
                                 <div class="text-5xl mb-3">🥉</div>
                                 <h3 class="course-card-title text-xl font-bold">Conocedor</h3>
                                 <p class="text-slate-400 text-sm mt-1">Calificación entre 70% - 79%</p>
@@ -816,7 +731,12 @@
                             </div>
 
                             <!-- Plata -->
-                            <div class="course-card course-card-level-intermedio flex flex-col text-center p-5 border-purple-500/40" data-logro="plata">
+                            <div class="course-card border-purple-500/30" data-logro="plata">
+                                <div class="card-deco">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#94A3B8" stroke="#64748B" stroke-width="0.5"/>
+                                    </svg>
+                                </div>
                                 <div class="text-5xl mb-3">🥈</div>
                                 <h3 class="course-card-title text-xl font-bold">Especialista</h3>
                                 <p class="text-slate-400 text-sm mt-1">Calificación entre 80% - 89%</p>
@@ -829,8 +749,8 @@
                             </div>
 
                             <!-- Oro -->
-                            <div class="course-card course-card-level-avanzado flex flex-col text-center p-5 border-amber-500/40 relative overflow-visible" data-logro="oro">
-                                <div class="absolute -top-1 -right-1 w-14 h-14 animate-pulse opacity-20">
+                            <div class="course-card border-amber-400/30 relative overflow-visible" data-logro="oro">
+                                <div class="card-deco" style="animation-delay: 0.5s;">
                                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#FBBF24" stroke="#F59E0B" stroke-width="0.5"/>
                                     </svg>
@@ -847,8 +767,8 @@
                             </div>
 
                             <!-- Leyenda -->
-                            <div class="course-card flex flex-col text-center p-5 border-cyan-500/40 relative overflow-visible" data-logro="leyenda">
-                                <div class="absolute -top-1 -right-1 w-14 h-14 animate-pulse opacity-20">
+                            <div class="course-card border-cyan-400/30 relative overflow-visible" data-logro="leyenda">
+                                <div class="card-deco" style="animation-delay: 1s;">
                                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#06B6D4" stroke="#0E7490" stroke-width="0.5"/>
                                     </svg>
@@ -864,6 +784,8 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="w-full h-8"></div>
                     </div>
                 </section>
                 <!-- FIN SECCIÓN GAMIFICACIÓN Y LOGROS -->
@@ -941,47 +863,15 @@
                 </div>
 
                 <!-- ============================================== -->
-                <!-- SECCIÓN: TUS LOGROS OBTENIDOS (DEBAJO DE LA TARJETA) -->
+                <!-- SECCIÓN: TUS LOGROS OBTENIDOS (DINÁMICO) -->
                 <!-- ============================================== -->
                 <div class="logros-obtenidos-card p-5 md:p-6">
                     <h4 class="text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2 mb-4">
                         <i class="fas fa-award text-cyan-400"></i> Tus Logros Obtenidos
                     </h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="logros-obtenidos-lista">
-                        <!-- Logro 1: Arranque de motores -->
-                        <div class="logro-item flex items-center gap-4">
-                            <div class="text-4xl flex-shrink-0">🥇</div>
-                            <div class="flex-1">
-                                <p class="font-bold text-sm text-white">Arranque de motores con contactores Online</p>
-                                <p class="text-xs text-slate-400">🥇 Maestro</p>
-                            </div>
-                            <div class="text-right">
-                                <span class="text-cyan-400 font-bold text-lg">97%</span>
-                            </div>
-                        </div>
-
-                        <!-- Logro 2: Funciones Lógicas -->
-                        <div class="logro-item flex items-center gap-4">
-                            <div class="text-4xl flex-shrink-0">🏆</div>
-                            <div class="flex-1">
-                                <p class="font-bold text-sm text-white">Funciones Lógicas en PLCs con Factory IO Online</p>
-                                <p class="text-xs text-slate-400">🏆 Leyenda</p>
-                            </div>
-                            <div class="text-right">
-                                <span class="text-cyan-400 font-bold text-lg">100%</span>
-                            </div>
-                        </div>
-
-                        <!-- Logro 3: Leyenda (mensaje de excelencia) -->
-                        <div class="logro-item md:col-span-2 flex items-center gap-4" style="border-color: rgba(6, 182, 212, 0.3); background: rgba(6, 182, 212, 0.05);">
-                            <div class="text-4xl flex-shrink-0">🏆</div>
-                            <div class="flex-1">
-                                <p class="font-bold text-sm text-white">🏆 Leyenda</p>
-                                <p class="text-xs text-slate-300">¡Excelencia absoluta! Has demostrado un dominio total de la automatización.</p>
-                            </div>
-                            <div class="text-right">
-                                <span class="text-amber-400 font-bold text-lg">100%</span>
-                            </div>
+                    <div id="logros-obtenidos-lista">
+                        <div class="text-slate-400 text-sm text-center py-4" id="logros-loading">
+                            <i class="fas fa-spinner fa-spin mr-2"></i> Cargando tus logros...
                         </div>
                     </div>
                 </div>
@@ -1191,6 +1081,257 @@
         return {completed, total: totalLessons, percent, scores, avgScore: avg, progress: progressIndices};
     }
 
+    function getAchievementIcon(score) {
+        if (score === undefined || score === null || score < 70) return '📚';
+        if (score === 100) return '🏆';
+        if (score >= 90) return '🥇';
+        if (score >= 80) return '🥈';
+        return '🥉';
+    }
+
+    function getAchievementLevel(score) {
+        if (score === undefined || score === null || score < 70) return 'Aprendiz';
+        if (score === 100) return '🏆 Leyenda';
+        if (score >= 90) return '🥇 Maestro';
+        if (score >= 80) return '🥈 Especialista';
+        return '🥉 Conocedor';
+    }
+
+    function getAchievementDescription(score) {
+        if (score === undefined || score === null || score < 70) {
+            return 'Sigue practicando, cada error es una oportunidad de aprendizaje.';
+        }
+        if (score === 100) {
+            return '¡Excelencia absoluta! Has demostrado un dominio total de la automatización.';
+        }
+        if (score >= 90) {
+            return '¡Impresionante! Tu nivel técnico es excepcional. Sigue así.';
+        }
+        if (score >= 80) {
+            return 'Muy bien! Demuestras un sólido dominio de los conceptos.';
+        }
+        return 'Buen trabajo! Has superado el nivel básico, sigue avanzando.';
+    }
+
+    // ==========================================
+    // FUNCIÓN PARA RENDERIZAR LOGROS OBTENIDOS
+    // ==========================================
+    function renderAchievements() {
+        const container = document.getElementById('logros-obtenidos-lista');
+        if (!container) return;
+        
+        const email = currentUser?.email?.toLowerCase();
+        if (!email) {
+            container.innerHTML = '<div class="empty-achievements text-slate-400"><i class="fas fa-award text-3xl mb-2"></i><p>Inicia sesión para ver tus logros</p></div>';
+            return;
+        }
+
+        const accessedIds = currentUser?.accessedCursos || [];
+        
+        let achievements = [];
+        let totalScore = 0;
+        let completedCount = 0;
+
+        accessedIds.forEach(courseId => {
+            const course = COURSES_DATA.find(c => String(c.ID) === String(courseId));
+            if (!course) return;
+            
+            const progData = userProgress[email]?.[String(courseId)];
+            if (!progData) return;
+            
+            const avgScore = progData.avgScore || 0;
+            const percent = progData.percent || 0;
+            
+            // SOLO mostrar logros si el curso está COMPLETADO al 100%
+            if (percent === 100) {
+                completedCount++;
+                totalScore += avgScore;
+                
+                let medal = '';
+                let nivel = '';
+                let nivelClass = '';
+                let descripcion = '';
+                
+                if (avgScore === 100) {
+                    medal = '🏆';
+                    nivel = 'Leyenda';
+                    nivelClass = 'leyenda';
+                    descripcion = '¡Excelencia absoluta! Has demostrado un dominio total de la automatización.';
+                } else if (avgScore >= 90) {
+                    medal = '🥇';
+                    nivel = 'Maestro';
+                    nivelClass = 'oro';
+                    descripcion = 'Tu excelencia técnica te posiciona como un referente en automatización industrial.';
+                } else if (avgScore >= 80) {
+                    medal = '🥈';
+                    nivel = 'Especialista';
+                    nivelClass = 'plata';
+                    descripcion = 'Tu dominio técnico te permite abordar proyectos con confianza y criterio.';
+                } else if (avgScore >= 70) {
+                    medal = '🥉';
+                    nivel = 'Conocedor';
+                    nivelClass = 'bronce';
+                    descripcion = 'Has demostrado un conocimiento sólido de los fundamentos. ¡Sigue practicando!';
+                }
+                
+                achievements.push({
+                    courseName: course.Nombre || 'Curso',
+                    medal: medal,
+                    nivel: nivel,
+                    nivelClass: nivelClass,
+                    score: avgScore,
+                    descripcion: descripcion,
+                    percent: percent
+                });
+            }
+        });
+
+        // Calcular promedio general
+        const avgGeneral = completedCount > 0 ? Math.round(totalScore / completedCount) : 0;
+
+        // === RESALTAR NIVEL EN TARJETAS CON BORDE DEL COLOR DE LA ESTRELLA ===
+        highlightAchievementLevel(avgGeneral);
+
+        // === RANKING - Mostrar en la sección de gamificación ===
+        let rankingContainer = document.getElementById('ranking-container');
+        if (!rankingContainer) {
+            rankingContainer = document.createElement('div');
+            rankingContainer.id = 'ranking-container';
+            rankingContainer.className = 'w-full mt-4 text-center';
+            const logrosSection = document.getElementById('logros-motivacion');
+            if (logrosSection) {
+                logrosSection.appendChild(rankingContainer);
+            }
+        }
+        
+        rankingContainer.innerHTML = `
+            <div class="inline-block bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-amber-500/10 rounded-2xl px-6 py-3 border border-white/5">
+                <p class="text-slate-300 text-sm font-medium">
+                    <span class="text-cyan-400 font-bold">🏆 Ranking</span> 
+                    ${completedCount > 0 ? 
+                        `Promedio: <span class="text-${avgGeneral >= 90 ? 'amber-400' : avgGeneral >= 80 ? 'purple-400' : avgGeneral >= 70 ? 'amber-500' : 'slate-400'} font-bold">${avgGeneral}%</span> · 
+                        ${completedCount} curso(s) completados · 
+                        Nivel: <span class="text-${avgGeneral >= 90 ? 'amber-400' : avgGeneral >= 80 ? 'purple-400' : avgGeneral >= 70 ? 'amber-500' : 'slate-400'} font-bold">${getAchievementLevel(avgGeneral)}</span>` :
+                        `Aún no has completado ningún curso. ¡Comienza tu primer curso!`
+                    }
+                </p>
+            </div>
+        `;
+
+        // === LOGROS OBTENIDOS ===
+        if (achievements.length === 0) {
+            container.innerHTML = `<div class="empty-achievements text-slate-400">
+                <i class="fas fa-trophy text-3xl mb-2"></i>
+                <p>${completedCount > 0 ? 'No hay logros para mostrar' : 'Aún no has completado ningún curso. ¡Comienza tu primer curso!'}</p>
+            </div>`;
+            return;
+        }
+
+        // Ordenar por puntuación (mayor a menor)
+        achievements.sort((a, b) => b.score - a.score);
+
+        let html = '<div class="grid grid-cols-1 md:grid-cols-2 gap-4">';
+        const displayCount = Math.min(achievements.length, 4);
+        
+        for (let i = 0; i < displayCount; i++) {
+            const logro = achievements[i];
+            const isHighlight = logro.nivel === 'Leyenda' || logro.nivel === 'Maestro';
+            const borderStyle = isHighlight ? 'border-cyan-500/30 bg-cyan-500/5' : '';
+            
+            html += `
+                <div class="logro-item flex items-center gap-4 ${borderStyle}">
+                    <div class="logro-medal">${logro.medal}</div>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-bold text-sm text-white truncate" title="${logro.courseName}">${logro.courseName}</p>
+                        <div class="flex items-center gap-2 mt-0.5">
+                            <span class="logro-nivel ${logro.nivelClass}">${logro.nivel}</span>
+                            <span class="text-xs text-slate-400">${logro.percent}% completado</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1 hidden sm:block">${logro.descripcion}</p>
+                    </div>
+                    <div class="text-right flex-shrink-0">
+                        <span class="text-cyan-400 font-bold text-lg">${logro.score}%</span>
+                    </div>
+                </div>
+            `;
+        }
+        
+        html += '</div>';
+        
+        if (achievements.length > 4) {
+            html += `
+                <div class="text-center text-slate-400 text-sm mt-4">
+                    <i class="fas fa-ellipsis-h mr-1"></i> Y ${achievements.length - 4} logro(s) más...
+                </div>
+            `;
+        }
+        
+        container.innerHTML = html;
+    }
+
+    // ==========================================
+    // FUNCIÓN PARA RESALTAR EL NIVEL CON BORDE DEL COLOR DE LA ESTRELLA
+    // ==========================================
+    function highlightAchievementLevel(score) {
+        const containers = {
+            'bronce': document.querySelector('[data-logro="bronce"]'),
+            'plata': document.querySelector('[data-logro="plata"]'),
+            'oro': document.querySelector('[data-logro="oro"]'),
+            'leyenda': document.querySelector('[data-logro="leyenda"]')
+        };
+
+        // Resetear todos los estilos
+        Object.values(containers).forEach(el => {
+            if (el) {
+                el.classList.remove('ring-2', 'ring-cyan-400', 'ring-amber-400', 'ring-purple-400', 'ring-amber-500', 'scale-105');
+                el.style.borderColor = '';
+                el.style.borderWidth = '';
+                el.style.boxShadow = '';
+            }
+        });
+
+        if (score < 70 || score === 0) return;
+
+        let target = null;
+
+        if (score === 100) {
+            target = containers.leyenda;
+            if (target) {
+                target.classList.add('ring-2', 'ring-cyan-400', 'scale-105');
+                target.style.borderColor = '#06b6d4';
+                target.style.borderWidth = '3px';
+                target.style.boxShadow = '0 0 0 3px rgba(6, 182, 212, 0.6), 0 0 30px rgba(6, 182, 212, 0.3)';
+            }
+        } else if (score >= 90) {
+            target = containers.oro;
+            if (target) {
+                target.classList.add('ring-2', 'ring-amber-400', 'scale-105');
+                target.style.borderColor = '#fbbf24';
+                target.style.borderWidth = '3px';
+                target.style.boxShadow = '0 0 0 3px rgba(251, 191, 36, 0.6), 0 0 30px rgba(251, 191, 36, 0.3)';
+            }
+        } else if (score >= 80) {
+            target = containers.plata;
+            if (target) {
+                target.classList.add('ring-2', 'ring-purple-400', 'scale-105');
+                target.style.borderColor = '#a78bfa';
+                target.style.borderWidth = '3px';
+                target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.6), 0 0 30px rgba(139, 92, 246, 0.3)';
+            }
+        } else if (score >= 70) {
+            target = containers.bronce;
+            if (target) {
+                target.classList.add('ring-2', 'ring-amber-500', 'scale-105');
+                target.style.borderColor = '#f59e0b';
+                target.style.borderWidth = '3px';
+                target.style.boxShadow = '0 0 0 3px rgba(245, 158, 11, 0.6), 0 0 30px rgba(245, 158, 11, 0.3)';
+            }
+        }
+    }
+
+    // ==========================================
+    // FUNCIONES DE CARGA DE DATOS
+    // ==========================================
     async function loadData() {
         if(!currentUser) return;
         try {
@@ -1209,13 +1350,10 @@
                 let myCourseNamesRaw = dbUserCourses[email] || [];
                 let myCourseNames = splitCourseNames(myCourseNamesRaw);
                 
-                console.log('📋 Cursos del usuario en servidor:', myCourseNames);
-                
                 let myCourseIds = [];
                 myCourseNames.forEach(cName => {
                     const key = email + '|' + cName;
                     const acceso = dbUserAccessStatus[key] || 'NO';
-                    console.log(`🔐 ${cName} -> Acceso: ${acceso}`);
                     
                     if (acceso === 'SÍ' || acceso === 'SI' || acceso === 'TRUE' || acceso === 'true' || acceso === true) {
                         let nn = normalizeName(cName);
@@ -1225,7 +1363,6 @@
                         }
                         if(found) {
                             myCourseIds.push(found.ID || found.id);
-                            console.log('  ✅ Curso habilitado (progreso):', cName, '-> ID:', found.ID || found.id);
                         }
                     }
                 });
@@ -1256,14 +1393,9 @@
                 localStorage.setItem('user', JSON.stringify(currentUser));
                 window.currentUser = currentUser;
                 
-                console.log('👤 Usuario sincronizado:', {
-                    name: currentUser.name,
-                    email: currentUser.email,
-                    accessedCursos: currentUser.accessedCursos.length
-                });
-                
                 fetchProgressForAllCourses();
                 updateDashboard();
+                renderAchievements();
             }
         } catch(e) { 
             console.error("Error al cargar datos:", e); 
@@ -1313,7 +1445,6 @@
             }));
             
             window.COURSES_DATA = COURSES_DATA;
-            console.log('✅ Catálogo cargado:', COURSES_DATA.length, 'cursos');
             await loadData();
             showSuccessToast();
         } catch (error) { 
@@ -1338,6 +1469,7 @@
             userProgress[email][String(courseId)] = parseProgressString(progStr, total);
         });
         renderUserProgress();
+        renderAchievements();
     }
 
     function getTotalLecciones(course) {
@@ -1349,74 +1481,76 @@
         return 5;
     }
 
-    function focusProgressCard(courseId) {
-        const targetCard = document.querySelector(`.course-progress-card[data-course-id="${courseId}"]`);
-        if (!targetCard) return;
-        targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        targetCard.classList.add('achievement-focus');
-        setTimeout(() => { targetCard.classList.remove('achievement-focus'); }, 1800);
-    }
-
     function renderUserProgress() {
         const coursesContainer = document.getElementById('individualCourseProgressCards');
-        const subjectsContainer = document.getElementById('individualSubjectProgressCards'); 
+        const subjectsContainer = document.getElementById('individualSubjectProgressCards');
         if (!coursesContainer || !subjectsContainer) return;
-        const user = currentUser;
-        const accessedIds = user?.accessedCursos || []; 
-        const email = user?.email?.toLowerCase();
+        
+        const email = currentUser?.email?.toLowerCase();
+        const accessedIds = currentUser?.accessedCursos || [];
+        
         if (!email || accessedIds.length === 0) {
             coursesContainer.innerHTML = '<div class="col-span-full empty-state italic text-center py-6 rounded-xl">No tienes cursos habilitados para mostrar.</div>';
             subjectsContainer.innerHTML = '<div class="col-span-full empty-state italic text-center py-6 rounded-xl">No tienes materias habilitadas para mostrar.</div>';
             return;
         }
+        
         let coursesHtml = '';
         let subjectsHtml = '';
+        
         accessedIds.forEach(courseId => {
             const course = COURSES_DATA.find(c => String(c.ID) === String(courseId));
             if (!course) return;
+            
             const courseNombre = course.Nombre || course.nombre || 'Sin nombre';
             const courseTipo = (course.Tipo || course.tipo || 'Curso').toLowerCase();
             const totalLecciones = getTotalLecciones(course);
-            const progData = userProgress[email]?.[String(courseId)] || { completed: 0, total: totalLecciones, percent: 0, scores: [], progress: []};
-            const progressIndices = progData.progress || [];
-            const done = progData.completed;
+            const progData = userProgress[email]?.[String(courseId)] || { 
+                completed: 0, 
+                total: totalLecciones, 
+                percent: 0, 
+                scores: [], 
+                progress: [],
+                avgScore: 0
+            };
+            
+            const coursePercentage = progData.percent || 0;
+            const avgScore = progData.avgScore || 0;
             const scores = progData.scores || [];
-            const coursePercentage = progData.percent;
+            const progressIndices = progData.progress || [];
+            const done = progData.completed || 0;
+            
             let enrollmentDate = findDateInObject(latestEnrollmentDates, courseNombre) || '';
             let completionDate = findDateInObject(latestCompletionDates, courseNombre) || '';
             let enrollmentDisplay = enrollmentDate ? formatCertDate(normalizeDateString(enrollmentDate)) : '---';
             let completionDisplay = completionDate ? formatCertDate(normalizeDateString(completionDate)) : '---';
-            let certificateButton = '';
-            if (coursePercentage === 100) {
-                certificateButton = `<div class="mt-4 pt-4" style="border-top: 1px solid var(--border-default);">
-                    <button onclick="reproducirAplausoYCertificado('${courseId}')" class="w-full btn-metal-solid btn-metal-cyan py-2.5 rounded-xl text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2 transition shadow-sm">
-                        <i class="fas fa-certificate"></i> Ver Certificado
-                    </button>
-                </div>`;
+            
+            // Obtener nombres de módulos
+            let moduleNames = [];
+            if (course.NombresModulos && typeof course.NombresModulos === 'string') {
+                moduleNames = course.NombresModulos.split('|');
+            } else {
+                moduleNames = Array.from({length: progData.total || totalLecciones}, (_, i) => `Módulo ${i + 1}`);
             }
-            const getMedalIcon = (score) => {
-                if (score === undefined || score === null || score < 70) return '';
-                if (score === 100) return '🏆';
-                if (score >= 90) return '🥇';
-                if (score >= 80) return '🥈';
-                return '🥉';
-            };
-            let moduleNamesForPills = [];
-            if (course.NombresModulos && typeof course.NombresModulos === 'string') { moduleNamesForPills = course.NombresModulos.split('|'); }
-            else { moduleNamesForPills = Array.from({length: progData.total}, (_, i) => `Modulo ${i + 1}`); }
-            const lessonPillsHtml = moduleNamesForPills.map((moduleName, index) => {
+            
+            // Generar píldoras de progreso
+            const lessonPillsHtml = moduleNames.map((moduleName, index) => {
                 const score = scores[index];
                 let pillClass = 'lesson-pill';
                 if (score !== undefined && score !== null) {
-                    if (score >= 70) { pillClass += ' completed'; }
-                    else { pillClass += ' failed'; }
+                    if (score >= 70) {
+                        pillClass += ' completed';
+                    } else {
+                        pillClass += ' failed';
+                    }
                 } else if (progressIndices.includes(index)) {
                     pillClass += ' completed';
                 }
                 const isIntro = index === 0 && (moduleName.toLowerCase().includes('contenido') || moduleName.toLowerCase().includes('introduccion'));
-                const simpleTitle = isIntro ? "Intro" : `Leccion ${index}`;
+                const simpleTitle = isIntro ? "Intro" : `Lección ${index}`;
                 const abbreviatedTitle = isIntro ? "Intro" : `Lec${index}`;
-                const medalIcon = getMedalIcon(score);
+                const medalIcon = (score !== undefined && score !== null && score >= 70) ? 
+                    (score === 100 ? '🏆' : score >= 90 ? '🥇' : score >= 80 ? '🥈' : '🥉') : '';
                 const finalIcon = isIntro ? '<i class="fas fa-book" style="color: var(--text-muted);"></i>' : medalIcon;
                 return `<div class="flex flex-col items-center gap-1" title="${moduleName}">
                     <div class="lesson-pill w-full px-2 py-1.5 text-center rounded-lg ${pillClass} text-[10px] font-black uppercase tracking-wider">
@@ -1426,33 +1560,9 @@
                     <span class="text-lg medal-icon">${finalIcon}</span>
                 </div>`;
             }).join('');
-            let progressSummaryCardHtml = `
-            <div class="progress-summary-card rounded-xl p-5 shadow-inner mb-6">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                    <div class="flex-1">
-                        <h4 class="font-black uppercase tracking-widest text-xs" style="color: var(--text-secondary);"><i class="fas fa-chart-simple mr-1 text-secondary"></i> Mi progreso actual</h4>
-                        <div class="grid grid-cols-4 gap-x-2 gap-y-4 mt-3">${lessonPillsHtml}</div>
-                    </div>
-                    <div class="flex items-center justify-center w-24 h-24 relative self-center md:self-auto flex-shrink-0">
-                        <svg class="progress-ring w-full h-full" viewBox="0 0 100 100">
-                            <circle class="progress-track" stroke-width="8" stroke="currentColor" fill="transparent" r="42" cx="50" cy="50" />
-                            <circle class="transform -rotate-90 origin-center"
-                                stroke-width="8" stroke-linecap="round" stroke="currentColor" fill="transparent" r="42" cx="50" cy="50"
-                                style="stroke-dasharray: 264; stroke-dashoffset: calc(264 - (264 * ${coursePercentage}) / 100); color: ${coursePercentage === 100 ? '#fbbf24' : '#2dd4bf'};" />
-                        </svg>
-                        <span class="absolute text-xl font-black" style="color: ${coursePercentage === 100 ? '#fbbf24' : '#2dd4bf'};">${coursePercentage}%</span>
-                    </div>
-                </div>
-                <div class="mt-4 pt-4 grid grid-cols-2 gap-3 text-xs" style="border-top: 1px solid var(--border-default);">
-                    <div class="flex items-center gap-2"><i class="fas fa-calendar-check text-teal-400 text-sm"></i><div><p class="uppercase tracking-wider text-[10px]" style="color: var(--text-muted);">Inscripcion</p><p class="font-bold" style="color: var(--text-primary);">${enrollmentDisplay}</p></div></div>
-                    <div class="flex items-center gap-2"><i class="fas fa-calendar-alt text-purple-400 text-sm"></i><div><p class="uppercase tracking-wider text-[10px]" style="color: var(--text-muted);">Culminacion</p><p class="font-bold" style="color: var(--text-primary);">${completionDisplay}</p></div></div>
-                </div>
-                ${certificateButton}
-            </div>`;
+            
+            // Generar desglose de módulos
             let modulesHtml = '';
-            let moduleNames = [];
-            if (course.NombresModulos && typeof course.NombresModulos === 'string') { moduleNames = course.NombresModulos.split('|'); }
-            else { moduleNames = Array.from({length: progData.total}, (_, i) => `Modulo ${i + 1}`); }
             moduleNames.forEach((moduleName, i) => {
                 let stateClass = "", stateText = "", score = scores[i], stateModifier = '';
                 if (score !== undefined && score !== null && !isNaN(score)) {
@@ -1479,20 +1589,58 @@
                 const displayModuleName = moduleName.includes(':') ? moduleName.split(':')[1].trim() : moduleName;
                 modulesHtml += `<div class="module-row ${stateModifier} flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 p-3 sm:p-4 rounded-xl border ${stateClass}"><span class="tracking-wide text-xs sm:text-sm">${displayModuleName}</span><span class="module-status text-center sm:text-right w-fit sm:w-auto">${stateText}</span></div>`;
             });
+            
             const cardHtml = `
                 <div class="course-progress-card" data-course-id="${courseId}">
                     <div class="flex items-center justify-between mb-6 pb-4" style="border-bottom: 1px solid var(--border-default);">
                         <h3 class="course-title font-black uppercase tracking-tighter text-sm flex items-center gap-3">
                             <i class="fas fa-book-open text-blue-200"></i> ${courseNombre}
                         </h3>
-                        <span class="text-xl">${getMedalIcon(progData.avgScore)}</span>
+                        <span class="text-xl">${coursePercentage === 100 ? (avgScore >= 90 ? '🥇' : avgScore >= 80 ? '🥈' : avgScore >= 70 ? '🥉' : '📚') : '📚'}</span>
                     </div>
-                    ${progressSummaryCardHtml}
-                    <h4 class="font-black uppercase tracking-widest text-[10px] mb-4" style="color: var(--text-secondary);">Desglose de Modulos</h4>
+                    
+                    <div class="progress-summary-card rounded-xl p-5 shadow-inner mb-6">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                            <div class="flex-1">
+                                <h4 class="font-black uppercase tracking-widest text-xs" style="color: var(--text-secondary);">
+                                    <i class="fas fa-chart-simple mr-1 text-secondary"></i> Mi progreso actual
+                                </h4>
+                                <div class="grid grid-cols-4 gap-x-2 gap-y-4 mt-3">${lessonPillsHtml}</div>
+                            </div>
+                            <div class="flex items-center justify-center w-24 h-24 relative self-center md:self-auto flex-shrink-0">
+                                <svg class="progress-ring w-full h-full" viewBox="0 0 100 100">
+                                    <circle class="progress-track" stroke-width="8" stroke="currentColor" fill="transparent" r="42" cx="50" cy="50" />
+                                    <circle class="transform -rotate-90 origin-center"
+                                        stroke-width="8" stroke-linecap="round" stroke="currentColor" fill="transparent" r="42" cx="50" cy="50"
+                                        style="stroke-dasharray: 264; stroke-dashoffset: calc(264 - (264 * ${coursePercentage}) / 100); color: ${coursePercentage === 100 ? '#fbbf24' : '#2dd4bf'};" />
+                                </svg>
+                                <span class="absolute text-xl font-black" style="color: ${coursePercentage === 100 ? '#fbbf24' : '#2dd4bf'};">${coursePercentage}%</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 grid grid-cols-2 gap-3 text-xs" style="border-top: 1px solid var(--border-default);">
+                            <div class="flex items-center gap-2"><i class="fas fa-calendar-check text-teal-400 text-sm"></i><div><p class="uppercase tracking-wider text-[10px]" style="color: var(--text-muted);">Inscripción</p><p class="font-bold" style="color: var(--text-primary);">${enrollmentDisplay}</p></div></div>
+                            <div class="flex items-center gap-2"><i class="fas fa-calendar-alt text-purple-400 text-sm"></i><div><p class="uppercase tracking-wider text-[10px]" style="color: var(--text-muted);">Culminación</p><p class="font-bold" style="color: var(--text-primary);">${completionDisplay}</p></div></div>
+                        </div>
+                        ${coursePercentage === 100 ? `
+                        <div class="mt-4 pt-4" style="border-top: 1px solid var(--border-default);">
+                            <button onclick="reproducirAplausoYCertificado('${courseId}')" class="w-full btn-metal-solid btn-metal-cyan py-2.5 rounded-xl text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2 transition shadow-sm">
+                                <i class="fas fa-certificate"></i> Ver Certificado
+                            </button>
+                        </div>` : ''}
+                    </div>
+                    
+                    <h4 class="font-black uppercase tracking-widest text-[10px] mb-4" style="color: var(--text-secondary);">Desglose de Módulos</h4>
                     <div class="space-y-3">${modulesHtml}</div>
-                </div>`;
-            if (courseTipo === 'materia') { subjectsHtml += cardHtml; } else { coursesHtml += cardHtml; }
+                </div>
+            `;
+            
+            if (courseTipo === 'materia') {
+                subjectsHtml += cardHtml;
+            } else {
+                coursesHtml += cardHtml;
+            }
         });
+        
         coursesContainer.innerHTML = coursesHtml || '<div class="col-span-full empty-state italic text-center py-6 rounded-xl">No tienes cursos (Online/Presencial) habilitados.</div>';
         subjectsContainer.innerHTML = subjectsHtml || '<div class="col-span-full empty-state italic text-center py-6 rounded-xl">No tienes materias habilitadas.</div>';
     }
@@ -1503,18 +1651,22 @@
         document.getElementById('dash-student-email').innerText = currentUser.email || '-';
         document.getElementById('dash-student-id').innerText = (currentUser.cedula && currentUser.cedula !== "N/A") ? currentUser.cedula : "---";
         document.getElementById('dash-student-phone').innerText = (currentUser.telefono && currentUser.telefono !== "N/A") ? currentUser.telefono : "---";
+        
         const pais = currentUser.pais && currentUser.pais !== "N/A" ? currentUser.pais : "";
         const estado = currentUser.estado && currentUser.estado !== "N/A" ? currentUser.estado : "";
         let locationText = pais;
         if (estado) locationText += ` (${estado})`;
-        if (!locationText) locationText = "Pais Desconocido";
+        if (!locationText) locationText = "País Desconocido";
         document.getElementById('dash-student-location').innerText = locationText;
+        
         const flagImg = document.getElementById('dash-student-flag');
         let isoCode = null;
         if (pais) { const cleanPais = pais.trim().toLowerCase(); isoCode = countryToISO[cleanPais] || countryToISO[cleanPais.replace(/\s/g,'')]; }
         if (isoCode && flagImg) { flagImg.src = `https://flagcdn.com/w20/${isoCode}.png`; flagImg.classList.remove('hidden'); }
         else if (flagImg) { flagImg.classList.add('hidden'); }
+        
         document.getElementById('dash-student-profession').innerText = (currentUser.profession && currentUser.profession.trim() !== "") ? capitalize(currentUser.profession) : "Sin Perfil";
+        
         const accessed = currentUser.accessedCursos || [];
         let onlineCount = 0, presencialCount = 0;
         accessed.forEach(cId => {
@@ -1527,10 +1679,12 @@
         });
         document.getElementById('dash-student-online').innerText = onlineCount;
         document.getElementById('dash-student-presencial').innerText = presencialCount;
+        
         let totalDownloads = 0;
         if (Array.isArray(currentUser.downloadedFiles)) { totalDownloads = currentUser.downloadedFiles.length; }
         document.getElementById('dash-student-downloads').innerText = totalDownloads;
         document.getElementById('dash-student-likes').innerText = (currentUser.likedCourses || []).length;
+        
         renderUserProgress();
     }
 
@@ -1552,17 +1706,17 @@
 
     function generateCertificate(courseId) {
         if (!currentUser) { 
-            alert("Debes iniciar sesion para generar el certificado."); 
+            alert("Debes iniciar sesión para generar el certificado."); 
             return; 
         }
         window.open('certificado-page-id.html?courseId=' + courseId, '_blank');
     }
 
-    // Inicializar el sistema de logros cuando se cargue la página
+    // Inicializar
     document.addEventListener("DOMContentLoaded", async () => {
         console.log('Inicializando Progreso...');
         if (!currentUser) {
-            document.getElementById('progreso-page').innerHTML = '<div class="text-center mt-20" style="color: var(--text-primary);"><i class="fas fa-lock text-4xl mb-4"></i><p class="text-xl">Debes iniciar sesion para ver tu progreso.</p></div>';
+            document.getElementById('progreso-page').innerHTML = '<div class="text-center mt-20" style="color: var(--text-primary);"><i class="fas fa-lock text-4xl mb-4"></i><p class="text-xl">Debes iniciar sesión para ver tu progreso.</p></div>';
             return;
         }
         console.log('Usuario:', currentUser.email);
@@ -1572,5 +1726,6 @@
 <script src="js/auth.js"></script>
 <script src="js/navbar.js"></script>
 <script src="js/footer.js"></script>
+
 </body>
 </html>
