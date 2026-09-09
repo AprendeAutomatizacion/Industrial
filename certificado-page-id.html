@@ -195,6 +195,22 @@
             box-shadow: 0 5px 15px rgba(45, 184, 206, 0.4);
         }
 
+        .btn-pdf {
+            background: #dc2626;
+            color: white;
+        }
+        .btn-pdf:hover {
+            background: #ef4444;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.4);
+        }
+        .btn-pdf:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
         .btn-close {
             background: transparent;
             color: white;
@@ -590,6 +606,10 @@
                 width: 70px;
                 height: 70px;
             }
+            .btn-pdf {
+                padding: 8px 16px;
+                font-size: 11px;
+            }
         }
 
         /* ============================================
@@ -678,18 +698,15 @@
                 grid-auto-flow: column !important;
             }
             
-            /* EL margin-top se aplica dinámicamente desde JavaScript */
             .cert-footer {
                 padding: 0 10px !important;
             }
             
-            /* REDUCIR TAMAÑO DEL QR EN IMPRESIÓN */
             .cert-qr-img {
                 width: 100px !important;
                 height: 100px !important;
             }
             
-            /* REDUCIR TAMAÑO DE FIRMA */
             .cert-signature-line {
                 width: 130px !important;
             }
@@ -706,7 +723,6 @@
                 font-size: 8px !important;
             }
             
-            /* REDUCIR PADDING DEL TEMARIO */
             .cert-temario-box {
                 padding: 8px 12px !important;
             }
@@ -751,13 +767,16 @@
 
     <!-- Barra de herramientas -->
     <div class="certificate-toolbar">
+        <button class="btn-cert btn-pdf" onclick="generarPDF()" id="btnPdf">
+            📄 Descargar PDF
+        </button>
         <button class="btn-cert btn-print" onclick="window.print()">
-            🖨️ Imprimir Certificado
+            🖨️ Imprimir
         </button>
         <button class="btn-cert btn-close" onclick="window.close()">
             ✕ Cerrar
         </button>
-        <span class="toolbar-text">Optimizado para Hoja Carta - Orientación Horizontal</span>
+        <span class="toolbar-text">Optimizado para Hoja Carta - Horizontal</span>
     </div>
 
     <!-- Contenedor del certificado -->
@@ -932,6 +951,37 @@
                     }
                 }, 1000);
             }
+        }
+        
+        // ==========================================
+        // FUNCIÓN PARA GENERAR PDF - MÉTODO CONFIABLE
+        // ==========================================
+        function generarPDF() {
+            const btn = document.getElementById('btnPdf');
+            const textoOriginal = btn.innerHTML;
+            
+            // Mostrar estado de carga
+            btn.innerHTML = '⏳ Preparando...';
+            btn.disabled = true;
+            
+            // Mostrar instrucciones al usuario
+            alert(
+                '📄 Para generar el PDF:\n\n' +
+                '1. Haz clic en "Aceptar" para abrir el diálogo de impresión\n' +
+                '2. En "Destino", selecciona "Guardar como PDF"\n' +
+                '3. Ajusta la orientación a "Horizontal" (si es necesario)\n' +
+                '4. Haz clic en "Guardar"\n\n' +
+                '✅ Así obtendrás tu certificado en PDF con la mejor calidad.'
+            );
+            
+            // Abrir el diálogo de impresión
+            window.print();
+            
+            // Restaurar el botón después de un tiempo
+            setTimeout(() => {
+                btn.innerHTML = textoOriginal;
+                btn.disabled = false;
+            }, 3000);
         }
         
         // ==========================================
@@ -1135,11 +1185,16 @@
                 // ==========================================
                 // AJUSTE DINÁMICO PARA IMPRESIÓN
                 // ==========================================
-                // Guardamos el número de módulos en una variable global para usarlo en el estilo de impresión
                 window.totalModulos = totalModules;
                 
-                // Aplicamos el margin-top según la cantidad de módulos
-                // Para la vista en pantalla (no impresión) usamos valores fijos
+                function getPrintMarginTop(modulos) {
+                    if (modulos <= 3) return 90;
+                    if (modulos <= 6) return 70;
+                    if (modulos <= 9) return 50;
+                    return 30;
+                }
+                
+                // Aplicar margin-top para vista en pantalla
                 if (numFilas === 2) {
                     footerElement.style.marginTop = '110px';
                 } else if (numFilas === 3) {
@@ -1150,20 +1205,9 @@
                     footerElement.style.marginTop = '110px';
                 }
                 
-                console.log('📋 Total módulos:', totalModules, '→ Filas:', numFilas, '→ Footer margin-top:', footerElement.style.marginTop);
-                console.log('📋 Para impresión: margin-top será de', getPrintMarginTop(totalModules), 'px');
+                console.log('📋 Total módulos:', totalModules, '→ Filas:', numFilas);
                 
-                // ==========================================
-                // INYECTAR ESTILO DINÁMICO PARA IMPRESIÓN
-                // ==========================================
-                function getPrintMarginTop(modulos) {
-                    if (modulos <= 3) return 90;
-                    if (modulos <= 6) return 70;
-                    if (modulos <= 9) return 50;
-                    return 30; // para 10 o más módulos
-                }
-                
-                // Crear un estilo dinámico para la impresión
+                // Inyectar estilo dinámico para impresión
                 const styleId = 'dynamic-print-style';
                 let existingStyle = document.getElementById(styleId);
                 if (existingStyle) {

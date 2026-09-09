@@ -305,48 +305,39 @@
             .loading-toast.success-toast .toast-check { width: 24px; height: 24px; }
         }
 
-        @media (min-width: 641px) and (max-width: 768px) {
-            .loading-toast { bottom: 20px; right: 20px; left: auto; min-width: 220px; max-width: 280px; }
-        }
-
         @keyframes slideInRight { from { transform: translateX(150%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
         @keyframes slideInUp { from { transform: translateY(150%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         @keyframes pulseLogo { 0%, 100% { filter: drop-shadow(0 0 5px rgba(45, 184, 206, 0.25)); transform: scale(1); } 50% { filter: drop-shadow(0 0 12px rgba(45, 184, 206, 0.55)); transform: scale(1.06); } }
         @keyframes bounceIn { 0% { transform: scale(0); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
 
-        #floatingBackBtn {
+        .whatsapp-float {
             position: fixed;
             bottom: 24px;
-            left: 24px;
-            z-index: 9999;
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px) saturate(180%);
-            -webkit-backdrop-filter: blur(16px) saturate(180%);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            padding: 0.75rem 1.25rem;
-            color: var(--text-default);
-            font-weight: 800;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            right: 24px;
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            opacity: 0;
-            transform: translateY(20px);
-            pointer-events: none;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 26px;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+            z-index: 99998;
+            transition: all 0.3s;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
         }
-        #floatingBackBtn.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-        #floatingBackBtn:hover { transform: translateY(-3px); box-shadow: var(--cyan-glow); border-color: rgba(6, 182, 212, 0.3); }
+        .whatsapp-float:hover { transform: scale(1.12) translateY(-3px); box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5); }
+        @media (max-width: 768px) {
+            .whatsapp-float { width: 48px; height: 48px; font-size: 24px; bottom: 16px; right: 16px; }
+        }
 
-        html.light-mode body .course-card { background: rgba(255, 255, 255, 0.8); border-color: rgba(255, 255, 255, 0.5); }
-        html.light-mode body .course-card h3, html.light-mode body .course-card .text-slate-900 { color: #1e293b !important; }
-
+        body.light-mode .course-card { background: rgba(255, 255, 255, 0.8); border-color: rgba(255, 255, 255, 0.5); }
+        body.light-mode .course-card h3 { color: #1e293b !important; }
         body.light-mode header {
             background: rgba(227, 241, 248, 0.72) !important;
             backdrop-filter: blur(16px) saturate(160%) !important;
@@ -362,177 +353,10 @@
             .hero-main-title { font-size: 1.75rem !important; line-height: 1.15 !important; }
             .particles-bg { display: none; }
             .course-card:hover { transform: translateY(-2px) scale(1.005) !important; }
-            .custom-scrollbar::-webkit-scrollbar { width: 3px; }
-        }
-
-        .whatsapp-float {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 52px;
-            height: 52px;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            font-size: 26px;
-            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35), 0 0 0 1px rgba(255,255,255,0.1);
-            z-index: 99998;
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-        }
-        .whatsapp-float:hover { transform: scale(1.12) translateY(-3px); box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5); }
-        @media (max-width: 768px) {
-            .whatsapp-float { width: 48px; height: 48px; font-size: 24px; bottom: 16px; right: 16px; }
-        }
-
-        /* ==========================================
-           CORRECCIÓN MODO CLARO - FONDO BLANCO SÓLIDO
-           ========================================== */
-        body.light-mode {
-            color: #0f172a !important;
-        }
-
-        /* TARJETA DEL ESTUDIANTE - FONDO BLANCO SÓLIDO */
-        body.light-mode .student-card {
-            background: #ffffff !important;
-            background-color: #ffffff !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-            border: 1px solid #e2e8f0 !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
-        }
-
-        body.light-mode .student-card .text-white {
-            color: #0f172a !important;
-        }
-
-        body.light-mode .student-card .text-slate-300 {
-            color: #1e293b !important;
-        }
-
-        body.light-mode .student-card .text-slate-400 {
-            color: #475569 !important;
-        }
-
-        body.light-mode .student-card .border-white\/10 {
-            border-color: rgba(0, 0, 0, 0.08) !important;
-        }
-
-        body.light-mode .student-card .text-teal-400 {
-            color: #0d9488 !important;
-        }
-
-        body.light-mode .student-card .text-purple-400 {
-            color: #6d28d9 !important;
-        }
-
-        body.light-mode .student-card .text-amber-400 {
-            color: #b45309 !important;
-        }
-
-        body.light-mode .student-card .text-red-400 {
-            color: #b91c1c !important;
-        }
-
-        /* DESCRIPCIÓN - FONDO BLANCO SÓLIDO */
-        body.light-mode .border-cyan-500\/20 {
-            border-color: rgba(14, 116, 144, 0.15) !important;
-        }
-
-        body.light-mode .bg-gradient-to-r.from-cyan-500\/5 {
-            background: #ffffff !important;
-            background-color: #ffffff !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-        }
-
-        body.light-mode .group:hover .border-cyan-400\/50 {
-            border-color: rgba(14, 116, 144, 0.3) !important;
-        }
-
-        body.light-mode .group:hover .shadow-\[0_0_40px_rgba(6,182,212,0.08)\] {
-            box-shadow: 0 0 40px rgba(14, 116, 144, 0.08) !important;
-        }
-
-        /* TEXTOS DE LA DESCRIPCIÓN EN MODO CLARO */
-        body.light-mode .text-slate-300 {
-            color: #1e293b !important;
-        }
-
-        body.light-mode .text-slate-400 {
-            color: #475569 !important;
-        }
-
-        body.light-mode .text-white {
-            color: #0f172a !important;
-        }
-
-        body.light-mode .text-cyan-400 {
-            color: #0e7490 !important;
-        }
-
-        body.light-mode .text-cyan-300 {
-            color: #0e7490 !important;
-        }
-
-        body.light-mode .text-amber-400 {
-            color: #b45309 !important;
-        }
-
-        body.light-mode .text-emerald-400 {
-            color: #047857 !important;
-        }
-
-        body.light-mode .text-purple-400 {
-            color: #6d28d9 !important;
-        }
-
-        /* LÍNEAS DECORATIVAS EN MODO CLARO */
-        body.light-mode .bg-gradient-to-r.from-transparent.via-cyan-400 {
-            background: linear-gradient(to right, transparent, #0e7490, transparent) !important;
-        }
-
-        body.light-mode .bg-gradient-to-r.from-cyan-500.via-purple-500.to-emerald-500 {
-            background: linear-gradient(to right, #0e7490, #6d28d9, #047857) !important;
-        }
-
-        /* OTROS TEXTOS GENERALES */
-        body.light-mode .text-slate-500 {
-            color: #1e293b !important;
-        }
-
-        body.light-mode .text-slate-600 {
-            color: #1e293b !important;
-        }
-
-        body.light-mode .text-slate-700 {
-            color: #0f172a !important;
-        }
-
-        body.light-mode .text-slate-100 {
-            color: #0f172a !important;
-        }
-
-        body.light-mode .text-slate-200 {
-            color: #0f172a !important;
-        }
-
-        body.light-mode h1, 
-        body.light-mode h2, 
-        body.light-mode h3, 
-        body.light-mode h4, 
-        body.light-mode h5, 
-        body.light-mode h6 {
-            color: #0f172a !important;
         }
     </style>
 </head>
-<body id="mis-cursos-page" class="custom-scrollbar">
+<body class="custom-scrollbar">
 <div class="particles-bg" aria-hidden="true">
     <div class="particle" style="left:10%;top:90%;animation-delay:0s;animation-duration:25s;"></div>
     <div class="particle" style="left:20%;top:80%;animation-delay:5s;animation-duration:30s;width:6px;height:6px;"></div>
@@ -543,118 +367,110 @@
     <div class="particle" style="left:90%;top:92%;animation-delay:6s;animation-duration:24s;"></div>
 </div>
 
-<button id="floatingBackBtn" onclick="handleFloatingBack()" title="Volver"><i class="fas fa-arrow-left"></i><span id="floatingBackText">Volver</span></button>
+<!-- HEADER -->
+<header class="relative bg-white/10 backdrop-blur-md overflow-hidden border-y border-white/20 shadow-2xl">
+    <div class="absolute inset-0 z-0 opacity-20">
+        <img src="img/AA (7).gif" alt="Fondo decorativo" class="w-full h-full object-cover" loading="lazy">
+    </div>
+    <div class="absolute right-8 top-1/2 -translate-y-1/2 text-white/10 text-[180px] pointer-events-none z-0 hidden md:block">
+        <i class="fas fa-graduation-cap"></i>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 py-24 pt-40">
+        <div class="flex flex-wrap justify-start gap-2 mb-6 text-[10px] font-black uppercase tracking-widest">
+            <span class="bg-blue-500/20 px-3 py-1 rounded-full text-blue-400 border border-blue-500/30 backdrop-blur-md">PLC</span>
+            <span class="bg-red-500/20 px-3 py-1 rounded-full text-red-400 border border-red-500/30 backdrop-blur-md">Electricidad</span>
+            <span class="bg-emerald-500/20 px-3 py-1 rounded-full text-emerald-400 border border-emerald-500/30 backdrop-blur-md">Aprendizaje</span>
+        </div>
+        <h1 class="hero-main-title text-3xl md:text-5xl font-black mb-8 drop-shadow-lg uppercase tracking-tighter">MIS CURSOS <span class="text-secondary">ADQUIRIDOS</span></h1>
+        <p class="text-lg md:text-xl text-blue-50 max-w-3xl drop-shadow-md font-medium">Accede a toda la información, ejercicios, manuales y contenido de los cursos que has adquirido.</p>
+    </div>
+</header>
 
-<div id="page-mis-cursos" class="page-content">
-    <header class="relative bg-white/10 backdrop-blur-md overflow-hidden border-y border-white/20 shadow-2xl">
-        <div class="absolute inset-0 z-0 opacity-20">
-            <img src="img/AA (7).gif" alt="Fondo decorativo" class="w-full h-full object-cover" loading="lazy">
+<!-- CONTENIDO PRINCIPAL -->
+<div class="max-w-7xl mx-auto px-6 py-12">
+    
+    <!-- DESCRIPCIÓN INTRODUCTORIA (DEBAJO DEL HEADER, ANTES DE LA TARJETA) -->
+    <div class="w-full mb-10">
+        <div class="relative p-5 md:p-8 rounded-2xl border border-cyan-500/20 bg-gradient-to-r from-cyan-500/5 via-transparent to-purple-500/5 backdrop-blur-sm transition-all duration-500 hover:border-cyan-400/50 hover:shadow-[0_0_40px_rgba(6,182,212,0.08)] group">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-60"></div>
+            <p class="text-slate-300 text-sm md:text-lg leading-relaxed font-medium">
+                <span class="text-cyan-400 font-bold text-base md:text-xl">📚 Tu Progreso</span> 
+                en los cursos que has adquirido. Aquí encontrarás todo el 
+                <span class="text-white font-bold">material didáctico</span>, 
+                <span class="text-white font-bold">ejercicios prácticos</span>, 
+                <span class="text-white font-bold">simulaciones</span> y 
+                <span class="text-white font-bold">recursos descargables</span> 
+                para seguir <span class="text-cyan-300 font-semibold">avanzando a tu ritmo</span>.
+            </p>
+            <p class="text-slate-400 text-sm md:text-base leading-relaxed mt-3">
+                <i class="fas fa-quote-left text-cyan-400/50 mr-1 text-xs"></i>
+                Cada curso incluye 
+                <span class="text-amber-400 font-semibold">contenido estructurado</span>, 
+                <span class="text-emerald-400 font-semibold">lecciones prácticas</span> y 
+                <span class="text-purple-400 font-semibold">material de apoyo</span> 
+                para que puedas <span class="text-white font-bold">aplicar lo aprendido</span> en tus proyectos.
+                <i class="fas fa-quote-right text-cyan-400/50 ml-1 text-xs"></i>
+            </p>
+            <div class="mt-4 h-0.5 w-0 group-hover:w-full mx-auto bg-gradient-to-r from-cyan-500 via-purple-500 to-emerald-500 transition-all duration-700 rounded-full opacity-60"></div>
         </div>
-        <div class="absolute right-8 top-1/2 -translate-y-1/2 text-white/10 text-[180px] pointer-events-none z-0 hidden md:block">
-            <i class="fas fa-graduation-cap"></i>
-        </div>
-        <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 py-24 pt-40">
-            <div class="flex flex-wrap justify-start gap-2 mb-6 text-[10px] font-black uppercase tracking-widest">
-                <span class="bg-blue-500/20 px-3 py-1 rounded-full text-blue-400 border border-blue-500/30 backdrop-blur-md">PLC</span>
-                <span class="bg-red-500/20 px-3 py-1 rounded-full text-red-400 border border-red-500/30 backdrop-blur-md">Electricidad</span>
-                <span class="bg-emerald-500/20 px-3 py-1 rounded-full text-emerald-400 border border-emerald-500/30 backdrop-blur-md">Aprendizaje</span>
-            </div>
-            <h1 class="hero-main-title text-3xl md:text-5xl font-black mb-8 drop-shadow-lg uppercase tracking-tighter font-display">MIS CURSOS <span class="text-secondary">ADQUIRIDOS</span></h1>
-            <p class="text-lg md:text-xl text-blue-50 max-w-3xl drop-shadow-md font-medium">Accede a toda la información, ejercicios, manuales y contenido de los cursos que has adquirido.</p>
-        </div>
-    </header>
-    <div class="max-w-7xl mx-auto px-6 py-12">
-        <main class="relative z-10 flex-grow w-full">
-            <!-- TARJETA DEL ESTUDIANTE -->
-            <div id="misCursosUserInfo" class="w-full hidden">
-                <div class="student-card student-card-inner p-6 rounded-2xl relative flex flex-col">
-                    <div class="relative z-10 flex flex-col gap-3 h-full">
+    </div>
+
+    <main class="relative z-10 flex-grow w-full">
+        <!-- TARJETA DEL ESTUDIANTE -->
+        <div id="misCursosUserInfo" class="w-full hidden">
+            <div class="student-card p-6 rounded-2xl relative flex flex-col">
+                <div class="relative z-10 flex flex-col gap-3 h-full">
+                    <div>
+                        <h2 class="text-slate-400 text-xs uppercase font-black tracking-widest">Estudiante</h2>
+                        <p class="text-white text-xl font-bold" id="mcProfileName">-</p>
+                    </div>
+                    <p class="text-slate-300 text-sm font-medium" id="mcProfileEmail">-</p>
+                    <div class="grid grid-cols-2 gap-3 mt-2">
                         <div>
-                            <h2 class="text-slate-400 text-xs uppercase font-black tracking-widest">Estudiante</h2>
-                            <p class="text-white text-xl font-bold" id="mcProfileName">-</p>
+                            <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest flex items-center gap-1">
+                                <i class="fas fa-id-card text-slate-400 text-xs"></i> Cédula
+                            </p>
+                            <p class="text-white font-bold" id="mcProfileCedula">-</p>
                         </div>
-                        <p class="text-slate-300 text-sm font-medium" id="mcProfileEmail">-</p>
-                        <div class="grid grid-cols-2 gap-3 mt-2">
-                            <div>
-                                <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest flex items-center gap-1">
-                                    <i class="fas fa-id-card text-slate-400 text-xs"></i> Cédula
-                                </p>
-                                <p class="text-white font-bold" id="mcProfileCedula">-</p>
-                            </div>
-                            <div>
-                                <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest flex items-center gap-1">
-                                    <i class="fas fa-phone text-slate-400 text-xs"></i> Teléfono
-                                </p>
-                                <p class="text-white font-bold" id="mcProfilePhone">-</p>
-                            </div>
+                        <div>
+                            <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest flex items-center gap-1">
+                                <i class="fas fa-phone text-slate-400 text-xs"></i> Teléfono
+                            </p>
+                            <p class="text-white font-bold" id="mcProfilePhone">-</p>
                         </div>
-                        <div class="grid grid-cols-2 gap-3 mt-2">
-                            <div>
-                                <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest flex items-center gap-1">
-                                    <i class="fas fa-globe text-slate-400 text-xs" id="mcProfileGlobeIcon"></i> País
-                                </p>
-                                <div class="flex items-center gap-1 mt-0.5">
-                                    <img id="mcProfileFlag" src="" class="w-4 h-auto hidden rounded-sm" alt="Bandera">
-                                    <span class="text-white font-bold text-sm" id="mcProfileLocation">-</span>
-                                </div>
-                            </div>
-                            <div>
-                                <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest flex items-center gap-1">
-                                    <i class="fas fa-briefcase text-slate-400 text-xs"></i> Profesión
-                                </p>
-                                <p class="text-white font-bold text-sm mt-0.5" id="mcProfileProfession">-</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 mt-2">
+                        <div>
+                            <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest flex items-center gap-1">
+                                <i class="fas fa-globe text-slate-400 text-xs" id="mcProfileGlobeIcon"></i> País
+                            </p>
+                            <div class="flex items-center gap-1 mt-0.5">
+                                <img id="mcProfileFlag" src="" class="w-4 h-auto hidden rounded-sm" alt="Bandera">
+                                <span class="text-white font-bold text-sm" id="mcProfileLocation">-</span>
                             </div>
                         </div>
-                        <div class="mt-3 pt-3 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-2">
-                            <div class="text-center"><span class="text-slate-400 text-[10px] uppercase font-black tracking-widest flex items-center justify-center gap-1"><i class="fas fa-laptop text-teal-400 text-xs"></i> Online</span><span class="text-white font-black text-xl" id="mcStatOnline">0</span></div>
-                            <div class="text-center"><span class="text-slate-400 text-[10px] uppercase font-black tracking-widest flex items-center justify-center gap-1"><i class="fas fa-users text-purple-400 text-xs"></i> Presencial</span><span class="text-white font-black text-xl" id="mcStatPresencial">0</span></div>
-                            <div class="text-center"><span class="text-slate-400 text-[10px] uppercase font-black tracking-widest flex items-center justify-center gap-1"><i class="fas fa-book text-amber-400 text-xs"></i> Materias</span><span class="text-white font-black text-xl" id="mcStatMaterias">0</span></div>
-                            <div class="text-center"><span class="text-slate-400 text-[10px] uppercase font-black tracking-widest flex items-center justify-center gap-1"><i class="fas fa-file-pdf text-red-400 text-xs"></i> Manuales</span><span class="text-white font-black text-xl" id="mcStatManuales">0</span></div>
+                        <div>
+                            <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest flex items-center gap-1">
+                                <i class="fas fa-briefcase text-slate-400 text-xs"></i> Profesión
+                            </p>
+                            <p class="text-white font-bold text-sm mt-0.5" id="mcProfileProfession">-</p>
                         </div>
+                    </div>
+                    <div class="mt-3 pt-3 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        <div class="text-center"><span class="text-slate-400 text-[10px] uppercase font-black tracking-widest flex items-center justify-center gap-1"><i class="fas fa-laptop text-teal-400 text-xs"></i> Online</span><span class="text-white font-black text-xl" id="mcStatOnline">0</span></div>
+                        <div class="text-center"><span class="text-slate-400 text-[10px] uppercase font-black tracking-widest flex items-center justify-center gap-1"><i class="fas fa-users text-purple-400 text-xs"></i> Presencial</span><span class="text-white font-black text-xl" id="mcStatPresencial">0</span></div>
+                        <div class="text-center"><span class="text-slate-400 text-[10px] uppercase font-black tracking-widest flex items-center justify-center gap-1"><i class="fas fa-book text-amber-400 text-xs"></i> Materias</span><span class="text-white font-black text-xl" id="mcStatMaterias">0</span></div>
+                        <div class="text-center"><span class="text-slate-400 text-[10px] uppercase font-black tracking-widest flex items-center justify-center gap-1"><i class="fas fa-file-pdf text-red-400 text-xs"></i> Manuales</span><span class="text-white font-black text-xl" id="mcStatManuales">0</span></div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- DESCRIPCIÓN INTRODUCTORIA (ENTRE TARJETA Y CURSOS) -->
-            <div class="w-full mt-8 mb-10">
-                <div class="relative p-5 md:p-8 rounded-2xl border border-cyan-500/20 bg-gradient-to-r from-cyan-500/5 via-transparent to-purple-500/5 backdrop-blur-sm transition-all duration-500 hover:border-cyan-400/50 hover:shadow-[0_0_40px_rgba(6,182,212,0.08)] group">
-                    
-                    <!-- Línea decorativa superior -->
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-60"></div>
-                    
-                    <p class="text-slate-300 text-sm md:text-lg leading-relaxed font-medium">
-                        <span class="text-cyan-400 font-bold text-base md:text-xl">📚 Tu Progreso</span> 
-                        en los cursos que has adquirido. Aquí encontrarás todo el 
-                        <span class="text-white font-bold">material didáctico</span>, 
-                        <span class="text-white font-bold">ejercicios prácticos</span>, 
-                        <span class="text-white font-bold">simulaciones</span> y 
-                        <span class="text-white font-bold">recursos descargables</span> 
-                        para seguir <span class="text-cyan-300 font-semibold">avanzando a tu ritmo</span>.
-                    </p>
-                    
-                    <p class="text-slate-400 text-sm md:text-base leading-relaxed mt-3">
-                        <i class="fas fa-quote-left text-cyan-400/50 mr-1 text-xs"></i>
-                        Cada curso incluye 
-                        <span class="text-amber-400 font-semibold">contenido estructurado</span>, 
-                        <span class="text-emerald-400 font-semibold">lecciones prácticas</span> y 
-                        <span class="text-purple-400 font-semibold">material de apoyo</span> 
-                        para que puedas <span class="text-white font-bold">aplicar lo aprendido</span> en tus proyectos.
-                        <i class="fas fa-quote-right text-cyan-400/50 ml-1 text-xs"></i>
-                    </p>
-
-                    <!-- Línea decorativa inferior animada -->
-                    <div class="mt-4 h-0.5 w-0 group-hover:w-full mx-auto bg-gradient-to-r from-cyan-500 via-purple-500 to-emerald-500 transition-all duration-700 rounded-full opacity-60"></div>
-                </div>
-            </div>
-
-            <!-- GRID DE CURSOS -->
-            <div id="coursesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"></div>
-            <div id="noResultsMisCursos" class="hidden text-center py-12 max-w-2xl mx-auto"></div>
-        </main>
-    </div>
+        <!-- GRID DE CURSOS -->
+        <div id="coursesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 mb-20"></div>
+        <div id="noResultsMisCursos" class="hidden text-center py-12 max-w-2xl mx-auto"></div>
+    </main>
 </div>
-
-<div id="page-curso-detalle" class="page-content"><div id="detalle-container" class="pb-24 relative z-10"></div></div>
 
 <div id="loadingToast" class="loading-toast hidden">
     <div class="toast-logo">
@@ -681,9 +497,6 @@
     let studentCountsPerCourse = {};
     let courseRatings = {};
     let userProgress = {};
-    let currentViewedCourseId = null;
-    let latestEnrollmentDates = {};
-    let latestCompletionDates = {};
     let COURSES_DATA = [];
 
     function getTotalLecciones(course) {
@@ -693,25 +506,6 @@
         if (totalLecciones !== undefined && totalLecciones !== null && totalLecciones !== '') {
             total = parseInt(totalLecciones) || 5;
             return total;
-        }
-        if (course.Modulos || course.modulos) {
-            try {
-                const modulosRaw = course.Modulos || course.modulos;
-                const modulos = JSON.parse(modulosRaw);
-                if (Array.isArray(modulos) && modulos.length > 0) {
-                    total = modulos.length;
-                    return total;
-                }
-            } catch(e) {
-                const modulosStr = course.Modulos || course.modulos;
-                if (typeof modulosStr === 'string' && modulosStr.includes(',')) {
-                    const modulosArray = modulosStr.split(',').filter(m => m.trim() !== '');
-                    if (modulosArray.length > 0) {
-                        total = modulosArray.length;
-                        return total;
-                    }
-                }
-            }
         }
         return total;
     }
@@ -753,11 +547,6 @@
             toast.appendChild(checkDiv);
             toast.style.opacity = '1';
             toast.style.transform = 'translateX(0)';
-            if (window.innerWidth <= 640) {
-                toast.style.animation = 'slideInUp 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-            } else {
-                toast.style.animation = 'slideInRight 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-            }
             setTimeout(() => { hideLoadingToast(); }, 3000);
         }
     }
@@ -777,10 +566,6 @@
                 toast.style.transform = '';
             }, 350);
         }
-    }
-
-    function openCourseMaterial(courseId) {
-        window.location.href = `material-page-id.html?id=${courseId}`;
     }
 
     const countryToISO = { "venezuela": "ve", "colombia": "co", "mexico": "mx", "españa": "es", "argentina": "ar", "peru": "pe", "chile": "cl", "ecuador": "ec" };
@@ -806,9 +591,6 @@
         setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateY(20px)'; setTimeout(() => t.remove(), 300); }, 4000);
     }
 
-    function openModal(id){ document.getElementById(id)?.classList.add('active'); }
-    function closeModal(id){ document.getElementById(id)?.classList.remove('active'); }
-    function capitalize(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
     function ping(action, key) { try { if (navigator.sendBeacon) { navigator.sendBeacon(SCRIPT_URL, new URLSearchParams({action, key})); } else { fetch(SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: `action=${encodeURIComponent(action)}&key=${encodeURIComponent(key)}` }).catch(err => console.error('Ping fallback failed:', err)); } } catch (e) { console.error('Error al intentar enviar ping:', e); } }
 
     async function loadCoursesFromSheet() {
@@ -824,7 +606,6 @@
                 throw new Error(result.message || 'El script de Google devolvió un error.');
             }
             
-            // 🆕 NORMALIZAR CAMPOS PARA COMPATIBILIDAD
             let coursesArray = [];
             if (Array.isArray(result.data)) {
                 coursesArray = result.data;
@@ -852,10 +633,10 @@
                 NombresModulos: course.NombresModulos || course.nombresModulos || course.nombres_modulos || '',
                 Badges: course.Badges || course.badges || '',
                 Activo: course.Activo || course.activo || 'SI',
-                ProfesorNombre: course.ProfesorNombre || course.profesorNombre || (course.profesor && course.profesor.nombre) || '',
-                ProfesorFoto: course.ProfesorFoto || course.profesorFoto || (course.profesor && course.profesor.foto) || '',
-                ProfesorResena: course.ProfesorResena || course.profesorResena || (course.profesor && course.profesor.resena) || '',
-                ProfesorEspecialidad: course.ProfesorEspecialidad || course.profesorEspecialidad || (course.profesor && course.profesor.especialidad) || '',
+                ProfesorNombre: course.ProfesorNombre || course.profesorNombre || '',
+                ProfesorFoto: course.ProfesorFoto || course.profesorFoto || '',
+                ProfesorResena: course.ProfesorResena || course.profesorResena || '',
+                ProfesorEspecialidad: course.ProfesorEspecialidad || course.profesorEspecialidad || '',
                 Destacado: course.Destacado || course.destacado || false,
                 Modulos: course.Modulos || course.modulos || '',
                 Contenido: course.Contenido || course.contenido || ''
@@ -887,19 +668,6 @@
                 dbUserPaymentStatus = data.userPaymentStatus || {};
                 dbUserAccessStatus = data.userAccessStatus || {};
                 
-                let enrollmentDatesBackend = data.userCourseEnrollmentDates || {};
-                let completionDatesBackend = data.userCourseCompletionDates || {};
-                
-                console.log('📊 Datos cargados:', {
-                    users: Object.keys(dbUsers).length,
-                    stats: Object.keys(globalStats).length,
-                    userCourses: Object.keys(dbUserCourses).length,
-                    userDetails: Object.keys(dbUserDetails).length,
-                    userProgress: Object.keys(dbUserProgress).length,
-                    paymentStatus: Object.keys(dbUserPaymentStatus).length,
-                    accessStatus: Object.keys(dbUserAccessStatus).length
-                });
-                
                 calculateCourseRatings(); 
                 updateStudentCounts();
                 
@@ -907,7 +675,6 @@
                     const email = window.currentUser.email.toLowerCase();
                     let myCourseNamesRaw = dbUserCourses[email] || [];
                     let myCourseNames = splitCourseNames(myCourseNamesRaw);
-                    console.log('📋 Cursos encontrados en Mis Cursos para', email, ':', myCourseNames);
                     
                     let myCourseIds = [];
                     myCourseNames.forEach(cName => {
@@ -924,10 +691,7 @@
                             }
                             if(found) {
                                 myCourseIds.push(found.ID);
-                                console.log('  ✅ Curso habilitado:', cName, '-> ID:', found.ID);
                             }
-                        } else {
-                            console.log('  ⏳ Curso pendiente (no se muestra):', cName, 'Acceso:', acceso);
                         }
                     });
                     
@@ -950,24 +714,12 @@
                     window.currentUser.visitRegistro = globalUser.visitRegistro || window.currentUser.visitRegistro || { cursos: {}, infoPaginas: {}, aulas: {} };
                     
                     currentUser = window.currentUser;
-                    const backendDatesForEmail = enrollmentDatesBackend[email] || {};
-                    const backendCompDatesForEmail = completionDatesBackend[email] || {};
-                    latestEnrollmentDates = backendDatesForEmail;
-                    latestCompletionDates = backendCompDatesForEmail;
-                    
                     localStorage.setItem('user', JSON.stringify(window.currentUser));
-                    console.log('👤 Usuario sincronizado (solo cursos habilitados):', {
-                        name: window.currentUser.name,
-                        email: window.currentUser.email,
-                        accessedCursos: window.currentUser.accessedCursos.length,
-                        likedCourses: window.currentUser.likedCourses.length
-                    });
                     
                     updateAllUI(); 
                     fetchProgressForAllCourses(); 
                     renderMisCourses();
                 } else {
-                    console.log('⚠️ No hay usuario logueado');
                     renderMisCourses();
                 }
             } else {
@@ -1008,13 +760,7 @@
         const activeUser = window.currentUser || (typeof currentUser !== 'undefined' ? currentUser : null) || JSON.parse(localStorage.getItem('user') || 'null');
         if(!activeUser || !activeUser.email) return;
         window.currentUser = activeUser;
-        if (typeof currentUser !== 'undefined') currentUser = activeUser;
         const email=activeUser.email.toLowerCase();
-        if (!activeUser.likedCourses) activeUser.likedCourses = [];
-        if (!activeUser.accessedCursos) activeUser.accessedCursos = [];
-        if (!activeUser.downloadedFiles) activeUser.downloadedFiles = [];
-        if (!activeUser.ratings) activeUser.ratings = {};
-        if (!activeUser.visitRegistro) activeUser.visitRegistro = { cursos: {}, infoPaginas: {}, aulas: {} };
         const userData=JSON.stringify(activeUser);
         try {
             const response = await fetch(SCRIPT_URL, {
@@ -1023,72 +769,33 @@
                 body: `action=update_user&email=${encodeURIComponent(email)}&userData=${encodeURIComponent(userData)}`
             });
             const result = await response.json();
-            console.log('📤 Sincronización completada:', result);
             return result;
         } catch (e) { 
             console.error('Fallo en la red al sincronizar progreso de usuario:', e); 
-            showNotif('Error de sincronización', 'No se pudo guardar tu progreso en la nube.', 'error'); 
             throw e;
         }
     }
 
     function parseProgressString(raw, totalLessons) {
-        if(!raw || raw.trim()==="") return {completed:0, total:totalLessons, percent:0, scores:[], avgScore:0, progress:[]};
-        let safe = String(raw).trim().replace(/'/g,'"');
-        let scores = new Array(totalLessons).fill(null);
+        if(!raw || raw.trim()==="") return {completed:0, total:totalLessons, percent:0};
         let completed = 0;
-        let progressIndices = [];
         try {
-            const p = JSON.parse(safe);
-            if(p && typeof p === 'object') {
-                if(p.progress && Array.isArray(p.progress)) {
-                    progressIndices = p.progress.map(v => parseInt(v)).filter(v => !isNaN(v));
-                    completed = progressIndices.length;
-                } else if(typeof p.completed === 'number') {
-                    completed = p.completed;
-                    for(let i=0; i<completed; i++) progressIndices.push(i);
-                }
-                const src = p.scores || p;
-                if(Array.isArray(src)) {
-                    for(let i=0; i<src.length && i<totalLessons; i++) {
-                        scores[i] = Number(src[i]);
-                    }
-                } else if(typeof src === 'object') {
-                    for(let k in src) {
-                        let idx = parseInt(k);
-                        if(!isNaN(idx) && idx >= 0 && idx < totalLessons) {
-                            scores[idx] = Number(src[k]);
-                        }
-                    }
-                }
+            const p = JSON.parse(String(raw).trim().replace(/'/g,'"'));
+            if(p && p.progress && Array.isArray(p.progress)) {
+                completed = p.progress.length;
+            } else if(p && typeof p.completed === 'number') {
+                completed = p.completed;
             }
         } catch(e) {
-            if(safe.includes(',')) {
-                let parts = safe.split(',');
-                parts.forEach((p, i) => {
-                    if(i < totalLessons) scores[i] = Number(p.trim());
-                });
-            } else {
-                let n = parseFloat(safe);
-                if(!isNaN(n)) {
-                    if(safe.includes('%') || n <= 100) {
-                        completed = Math.round((n/100) * totalLessons);
-                    } else {
-                        completed = n;
-                    }
-                    scores[0] = n;
-                }
+            const n = parseFloat(String(raw).trim());
+            if(!isNaN(n)) {
+                if(n <= 100) completed = Math.round((n/100) * totalLessons);
+                else completed = n;
             }
         }
-        let valid = scores.filter(n => n !== null && !isNaN(n));
-        if(completed === 0 && valid.length > 0) {
-            completed = valid.length;
-            progressIndices = valid.map((_, i) => i);
-        }
         completed = Math.min(Math.max(0, completed), totalLessons);
-        const avg = valid.length > 0 ? Math.round(valid.reduce((a,b) => a+b, 0) / valid.length) : 0;
-        let percent = totalLessons > 0 ? Math.round((completed/totalLessons) * 100) : 0;
-        return { completed: completed, total: totalLessons, percent: percent, scores: scores, avgScore: avg, progress: progressIndices };
+        const percent = totalLessons > 0 ? Math.round((completed/totalLessons) * 100) : 0;
+        return { completed, total: totalLessons, percent };
     }
 
     function fetchProgressForAllCourses(){
@@ -1096,22 +803,17 @@
         const email=window.currentUser.email.toLowerCase();
         if(!userProgress[email]) userProgress[email]={};
         const progresos=dbUserProgress[email]||{};
-        const accessed=Array.isArray(window.currentUser.accessedCursos)?window.currentUser.accessedCursos:[];
+        const accessed=window.currentUser.accessedCursos;
         accessed.forEach(courseId=>{
             const course=COURSES_DATA.find(c=>c.ID===courseId);
             if(!course) return;
             let progStr="";
             const nc = normalizeName(course.Nombre);
             for(let key in progresos) {
-                if (normalizeName(key) === nc) {
-                    progStr = progresos[key];
-                    break;
-                }
+                if (normalizeName(key) === nc) { progStr = progresos[key]; break; }
             }
             const total = getTotalLecciones(course);
-            const parsedProgress = parseProgressString(progStr, total);
-            userProgress[email][String(courseId)] = parsedProgress;
-            console.log(`📊 Progreso ${course.Nombre}: ${parsedProgress.percent}% (${parsedProgress.completed}/${total})`);
+            userProgress[email][String(courseId)] = parseProgressString(progStr, total);
         });
         renderMisCourses();
     }
@@ -1128,22 +830,12 @@
         let locText=window.currentUser.pais&&window.currentUser.pais!=="N/A"?window.currentUser.pais:"País Desconocido";
         if(window.currentUser.pais==="Venezuela"&&window.currentUser.estado&&window.currentUser.estado!=="N/A") locText+=` (${window.currentUser.estado})`;
         setTxt('mcProfileLocation',locText);
-        const mcFlag=document.getElementById('mcProfileFlag'); const mcGlobe=document.getElementById('mcProfileGlobeIcon');
-        let isoCode=null; 
-        if(window.currentUser.pais&&window.currentUser.pais!=="N/A"){ 
-            const cleanPais=window.currentUser.pais.trim().toLowerCase(); 
-            isoCode=countryToISO[cleanPais]||countryToISO[cleanPais.replace(/\s/g,'')]; 
-        }
-        if(mcFlag&&mcGlobe){ 
-            if(isoCode){ mcFlag.src=`https://flagcdn.com/w20/${isoCode}.png`; mcFlag.classList.remove('hidden'); mcGlobe.classList.add('hidden'); } 
-            else { mcFlag.classList.add('hidden'); mcGlobe.classList.remove('hidden'); } 
-        }
         const accessed=Array.isArray(window.currentUser.accessedCursos)?window.currentUser.accessedCursos:[];
         let countOnline=0, countPresencial=0, countMaterias=0, countManuales=0;
         accessed.forEach(cId=>{
             const course=COURSES_DATA.find(c=>String(c.ID)===String(cId));
             if(course){
-                const tipo = (course.Tipo || course.tipo || '').toLowerCase();
+                const tipo = (course.Tipo || '').toLowerCase();
                 if(tipo === 'online') countOnline++;
                 else if(tipo === 'presencial') countPresencial++;
                 else if(tipo === 'materia') countMaterias++;
@@ -1156,176 +848,96 @@
         setTxt('mcStatManuales', countManuales);
     }
 
+    function capitalize(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+
     function renderMisCourses(){
         const grid=document.getElementById('coursesGrid'), noResults=document.getElementById('noResultsMisCursos');
         grid.innerHTML='';
         if(!window.currentUser){
             grid.classList.add('hidden'); noResults.classList.remove('hidden');
-            noResults.innerHTML=`<div class="p-8 rounded-2xl bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] shadow-xl"><i data-lucide="lock" class="mx-auto w-16 h-16 text-slate-300 mb-4"></i><h3 class="text-xl font-bold text-[var(--text-default)]">Acceso Restringido</h3><p class="text-[var(--text-secondary)] text-sm mt-2 mb-6">Debes iniciar sesión para ver tus cursos adquiridos.</p><button onclick="openModal('authModal')" class="bg-[#0f172a] hover:bg-[#2db8ce] text-white font-bold py-3 px-8 rounded-xl transition-all shadow-lg inline-flex items-center gap-2"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</button></div>`;
-            if(window.lucide) lucide.createIcons(); return;
+            noResults.innerHTML=`<div class="p-8 rounded-2xl bg-[var(--glass-bg)] border border-[var(--glass-border)]"><h3 class="text-xl font-bold">Acceso Restringido</h3><p class="text-sm mt-2">Debes iniciar sesión para ver tus cursos.</p></div>`;
+            return;
         }
-        console.log('📊 Renderizando cursos para:', window.currentUser.email);
-        console.log('📊 IDs accedidos (solo habilitados):', window.currentUser.accessedCursos);
         const accessedCourses = COURSES_DATA.filter(c => 
             window.currentUser.accessedCursos && 
             window.currentUser.accessedCursos.some(id => String(id) === String(c.ID))
         );
-        console.log('📊 Cursos encontrados (habilitados):', accessedCourses.length, accessedCourses.map(c => c.Nombre));
         if(accessedCourses.length===0){
             grid.classList.add('hidden'); noResults.classList.remove('hidden');
-            noResults.innerHTML=`<div class="p-8 rounded-2xl bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] shadow-xl"><i data-lucide="library" class="mx-auto w-16 h-16 text-slate-300 mb-4"></i><h3 class="text-xl font-bold text-[var(--text-default)]">Aún no tienes cursos habilitados</h3><p class="text-[var(--text-secondary)] text-sm mt-2 mb-6">Si ya compraste un curso, espera la verificación de pago para que aparezca aquí.</p><button onclick="window.open('https://wa.me/584121414196?text=Hola,%20quiero%20ver%20el%20catálogo%20de%20cursos', '_blank')" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-8 rounded-xl transition-all shadow-lg inline-flex items-center gap-2"><i class="fas fa-th"></i> Ver Catálogo</button></div>`;
-            if(window.lucide) lucide.createIcons(); return;
+            noResults.innerHTML=`<div class="p-8 rounded-2xl bg-[var(--glass-bg)] border border-[var(--glass-border)]"><h3 class="text-xl font-bold">Aún no tienes cursos habilitados</h3><p class="text-sm mt-2">Si ya compraste un curso, espera la verificación de pago.</p></div>`;
+            return;
         }
         grid.classList.remove('hidden'); noResults.classList.add('hidden');
         const emailKey=window.currentUser.email.toLowerCase(); 
         const myProgress=userProgress[emailKey]||{};
-        grid.innerHTML=accessedCourses.map((course,index)=>{
+        grid.innerHTML=accessedCourses.map((course)=>{
             const courseId = String(course.ID);
-            const courseNombre = course.Nombre || course.nombre || 'Sin nombre';
-            const courseTipo = course.Tipo || course.tipo || 'Curso';
-            const courseCategoria = course.Categoria || course.categoria || '';
-            const courseNivel = course.Nivel || course.nivel || 'Básico';
-            const courseImagen = course.ImagenURL || course.imagen_url || course.imagen || 'https://placehold.co/600x400/1e293b/2db8ce?text=Curso';
-            const courseEnlaceAula = course.EnlaceAula || course.enlace_aula || course.enlaceAula || '';
-            const isManual = courseTipo.toLowerCase() === 'manual';
+            const courseNombre = course.Nombre || 'Sin nombre';
+            const courseTipo = course.Tipo || 'Curso';
+            const courseCategoria = course.Categoria || '';
+            const courseNivel = course.Nivel || 'Básico';
+            const courseImagen = course.ImagenURL || 'https://placehold.co/600x400/1e293b/2db8ce?text=Curso';
+            const courseEnlaceAula = course.EnlaceAula || '';
             const likes=globalStats[`curso-${courseId}_likes`]||0;
             const vistas=globalStats[`curso-${courseId}_vistas`]||0;
             const avgRating=courseRatings[courseId]?courseRatings[courseId].avg:"5.0";
             const isLikedClass=(window.currentUser&&window.currentUser.likedCourses&&window.currentUser.likedCourses.includes(`curso-${courseId}`))?'liked text-red-500':'text-slate-400';
-            const viewsClass=vistas>0?'text-green-500':'text-slate-400';
-            const displayCount=studentCountsPerCourse[courseId]!==undefined?studentCountsPerCourse[courseId]:'...';
+            const displayCount=studentCountsPerCourse[courseId]||0;
             const totalLecciones = getTotalLecciones(course);
-            const progressData=myProgress[String(courseId)]||{completed:0,total:totalLecciones,percent:0,scores:[],avgScore:0,progress:[]};
+            const progressData=myProgress[String(courseId)]||{completed:0,total:totalLecciones,percent:0};
+            const percent = progressData.percent || 0;
             const completed = progressData.completed || 0;
             const total = progressData.total || totalLecciones;
-            const percent = progressData.percent || 0;
             const userRating=(window.currentUser&&window.currentUser.ratings&&window.currentUser.ratings[courseId])||0;
             let starsHTML='';
-            for(let i=1;i<=5;i++){ const filled=i<=userRating?'fas text-yellow-400':'far text-slate-300'; starsHTML+=`<i class="${filled} fa-star cursor-pointer text-xs hover:text-yellow-400 transition-colors" onclick="event.stopPropagation(); rateCourse('${courseId}',${i},false)"></i>`; }
-            let buttonsHTML = '';
-            if (isManual) {
-                buttonsHTML = `<button type="button" onclick="openCourseMaterial('${courseId}'); event.stopPropagation();" class="w-full course-btn-teal py-3 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-md flex items-center justify-center gap-2"><i class="fas fa-book-open"></i> Ver Materiales</button>`;
-                if (courseEnlaceAula && courseEnlaceAula.trim() !== '' && courseEnlaceAula.trim() !== '#') {
-                    buttonsHTML += `<button type="button" onclick="window.location.href='${courseEnlaceAula}'; event.stopPropagation();" class="w-full course-btn-cyan py-3 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-md flex items-center justify-center gap-2"><i class="fas fa-chalkboard-teacher"></i> Entrar al Aula</button>`;
-                }
+            for(let i=1;i<=5;i++){ const filled=i<=userRating?'fas text-yellow-400':'far text-slate-300'; starsHTML+=`<i class="${filled} fa-star cursor-pointer text-xs hover:text-yellow-400 transition-colors" onclick="event.stopPropagation(); rateCourse('${courseId}',${i})"></i>`; }
+            
+            let buttonHTML = '';
+            if (courseEnlaceAula && courseEnlaceAula.trim() !== '' && courseEnlaceAula !== '#') {
+                buttonHTML = `<button onclick="event.stopPropagation(); window.open('${courseEnlaceAula}', '_blank');" class="w-full course-btn-cyan py-3 rounded-xl text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2"><i class="fas fa-chalkboard-teacher"></i> Entrar al Aula Virtual</button>`;
             } else {
-                buttonsHTML = `<button type="button" onclick="openCourseMaterial('${courseId}'); event.stopPropagation();" class="w-full course-btn-teal py-3 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-md flex items-center justify-center gap-2"><i class="fas fa-folder-open"></i> Materiales del Curso</button>
-                ${courseEnlaceAula && courseEnlaceAula.trim() !== '' && courseEnlaceAula.trim() !== '#' ? `<button type="button" onclick="window.location.href='${courseEnlaceAula}'; event.stopPropagation();" class="w-full course-btn-cyan py-3 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-md flex items-center justify-center gap-2"><i class="fas fa-chalkboard-teacher"></i> Entrar al Aula Virtual</button>` : ''}`;
+                buttonHTML = `<button disabled class="w-full course-btn-teal py-3 rounded-xl text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 opacity-50"><i class="fas fa-clock"></i> Aula no disponible</button>`;
             }
-            const progressBarHTML =`
-            <div class="mt-4 mb-3 bg-[#0f172a]/80 backdrop-blur-md rounded-xl p-3 border border-white/10 shadow-inner">
-                <div class="flex justify-between items-center mb-2"><span class="text-[10px] font-bold uppercase tracking-widest text-white">Progreso</span><span class="text-xs font-black text-green-400">${percent}%</span></div>
-                <div class="w-full bg-white/10 rounded-full h-1.5 mb-2 overflow-hidden"><div class="bg-green-400 h-1.5 rounded-full transition-all duration-500" style="width: ${percent}%"></div></div>
-                <p class="progress-lessons-completed text-[10px] font-bold text-white">${completed} de ${total} lecciones completadas</p>
-            </div>`;
+            
             const normalizedLevel = (courseNivel || '').normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-            let levelBorderClass = '';
-            let levelIconClass = 'fa-question-circle';
-            let levelIconBg = 'bg-slate-500/10 border-slate-500/30';
-            let levelIconColor = 'text-slate-400';
-            if (normalizedLevel === 'basico' || normalizedLevel === 'básico') {
-                levelBorderClass = 'course-card-level-basico';
-                levelIconBg = 'bg-cyan-500/10 border-cyan-500/30';
-                levelIconColor = 'text-cyan-400';
-                levelIconClass = 'fa-seedling';
-            } else if (normalizedLevel === 'intermedio') {
-                levelBorderClass = 'course-card-level-intermedio';
-                levelIconBg = 'bg-purple-500/10 border-purple-500/30';
-                levelIconColor = 'text-purple-400';
-                levelIconClass = 'fa-cogs';
-            } else if (normalizedLevel === 'avanzado') {
-                levelBorderClass = 'course-card-level-avanzado';
-                levelIconBg = 'bg-amber-500/10 border-amber-500/30';
-                levelIconColor = 'text-amber-400';
-                levelIconClass = 'fa-rocket';
-            }
-            let iconsHTML = '';
-            if (isManual) {
-                iconsHTML = `
-                    <div class="absolute bottom-3 left-3 flex items-center gap-2">
-                        <div class="flex items-center justify-center ${levelIconBg} backdrop-blur-sm rounded-full w-10 h-10 shadow-lg border-2" title="${courseNivel}">
-                            <i class="fas ${levelIconClass} text-lg ${levelIconColor}"></i>
-                        </div>
-                        <div class="flex items-center justify-center bg-blue-500/10 border-2 border-blue-500/30 backdrop-blur-sm rounded-full w-10 h-10 shadow-lg" title="Manual">
-                            <i class="fas fa-book-open text-lg text-blue-400"></i>
-                        </div>
-                    </div>`;
-            } else {
-                iconsHTML = `<div class="absolute bottom-3 left-3 flex items-center justify-center ${levelIconBg} backdrop-blur-sm rounded-full w-10 h-10 shadow-lg border-2" title="${courseNivel}"><i class="fas ${levelIconClass} text-lg ${levelIconColor}"></i></div>`;
-            }
-            return `<div class="course-card bg-white rounded-[24px] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col group ${levelBorderClass}" onclick="grantAccess('${courseId}')">
+            let levelBorderClass = 'course-card-level-basico';
+            if (normalizedLevel === 'intermedio') levelBorderClass = 'course-card-level-intermedio';
+            else if (normalizedLevel === 'avanzado') levelBorderClass = 'course-card-level-avanzado';
+            
+            return `<div class="course-card ${levelBorderClass}" onclick="window.open('${courseEnlaceAula || '#'}', '_blank')">
                 <div class="relative aspect-video w-full overflow-hidden bg-[#0f172a]">
-                    <img src="${courseImagen}" class="w-full h-full object-cover opacity-100 transition-transform duration-500 group-hover:scale-105" onerror="this.src='https://placehold.co/600x400/1e293b/2db8ce?text=Curso'">
-                    <div class="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
-                        <span class="px-2.5 py-1 text-[9px] font-black uppercase tracking-widest rounded-md shadow-lg course-badge">${courseTipo}</span>
-                        <span class="px-2.5 py-1 text-[9px] font-black uppercase tracking-widest rounded-md shadow-lg course-badge">${courseCategoria}</span>
+                    <img src="${courseImagen}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/1e293b/2db8ce?text=Curso'">
+                    <div class="absolute top-3 left-3 flex flex-col gap-1.5">
+                        <span class="px-2.5 py-1 text-[9px] font-black uppercase tracking-widest rounded-md course-badge">${courseTipo}</span>
+                        <span class="px-2.5 py-1 text-[9px] font-black uppercase tracking-widest rounded-md course-badge">${courseCategoria}</span>
                     </div>
-                    <div class="absolute top-3 right-3 course-badge text-secondary text-[10px] font-black px-2 py-1 rounded-md shadow-lg flex items-center gap-1">
+                    <div class="absolute top-3 right-3 course-badge text-[10px] font-black px-2 py-1 rounded-md flex items-center gap-1">
                         <i class="fas fa-star text-yellow-400"></i> ${avgRating}
                     </div>
-                    ${iconsHTML}
                 </div>
                 <div class="p-5 md:p-6 flex-grow flex flex-col">
-                    <h3 class="text-lg font-bold text-slate-900 mb-3 leading-tight group-hover:text-[#2db8ce] transition-colors">${courseNombre}</h3>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3">${courseNombre}</h3>
                     <div class="flex items-center justify-between mb-4 text-xs font-bold text-slate-500">
-                        <div class="flex items-center gap-2">
-                            <span class="bg-slate-100 text-slate-600 px-2 py-1 rounded-md flex items-center gap-1 border border-slate-200"><i data-lucide="book-open" class="w-3 h-3"></i> ${courseNivel}</span>
-                            <span class="bg-green-50 text-green-600 border border-green-100 px-2 py-1 rounded-md flex items-center gap-1"><i data-lucide="users" class="w-3 h-3"></i> ${displayCount}</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <button class="like-btn flex items-center gap-1 ${isLikedClass} hover:text-red-500 transition-colors" data-id="curso-${courseId}" onclick="event.stopPropagation(); toggleLike(this)"><i class="fas fa-heart"></i><span class="like-count">${likes}</span></button>
-                            <span class="flex items-center gap-1 ${viewsClass}"><i class="fas fa-eye"></i><span>${vistas}</span></span>
-                        </div>
+                        <span class="bg-slate-100 text-slate-600 px-2 py-1 rounded-md">${courseNivel}</span>
+                        <span class="bg-green-50 text-green-600 px-2 py-1 rounded-md"><i class="fas fa-users"></i> ${displayCount}</span>
                     </div>
-                <div class="flex items-center gap-1.5 mt-3"><span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Valoración:</span><div class="flex gap-0.5">${starsHTML}</div></div>
-                ${progressBarHTML}
-                <div class="mt-auto pt-4 border-t border-slate-100 space-y-2" onclick="event.stopPropagation();">${buttonsHTML}</div>
+                    <div class="flex items-center gap-1.5 mt-3"><span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Valoración:</span><div class="flex gap-0.5">${starsHTML}</div></div>
+                    <div class="mt-4 mb-3 bg-[#0f172a]/80 rounded-xl p-3 border border-white/10">
+                        <div class="flex justify-between items-center mb-2"><span class="text-[10px] font-bold uppercase text-white">Progreso</span><span class="text-xs font-black text-green-400">${percent}%</span></div>
+                        <div class="w-full bg-white/10 rounded-full h-1.5 mb-2"><div class="bg-green-400 h-1.5 rounded-full" style="width: ${percent}%"></div></div>
+                        <p class="text-[10px] font-bold text-white">${completed} de ${total} lecciones</p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-slate-100" onclick="event.stopPropagation();">${buttonHTML}</div>
                 </div>
             </div>`;
         }).join('');
         if(window.lucide) lucide.createIcons();
     }
 
-    function showFloatingBackBtn(text,targetPage){ const btn=document.getElementById('floatingBackBtn'), span=document.getElementById('floatingBackText'); if(btn&&span){ span.innerText=text; btn.setAttribute('data-target',targetPage); btn.classList.add('visible'); } }
-    function hideFloatingBackBtn(){ const btn=document.getElementById('floatingBackBtn'); if(btn){ btn.classList.remove('visible'); btn.removeAttribute('data-target'); } }
-    function handleFloatingBack(){ const btn=document.getElementById('floatingBackBtn'), target=btn.getAttribute('data-target'); if(target==='page-mis-cursos'){ document.getElementById('page-curso-detalle').style.display='none'; document.getElementById('page-mis-cursos').style.display='block'; hideFloatingBackBtn(); window.scrollTo({top:0,behavior:'smooth'}); } }
-    
-    function grantAccess(courseId) {
-        try {
-            currentViewedCourseId = courseId;
-            ping('update_stat', `curso-${courseId}_vistas`);
-            if (globalStats) globalStats[`curso-${courseId}_vistas`] = (parseInt(globalStats[`curso-${courseId}_vistas`]) || 0) + 1;
-            if (window.currentUser && window.currentUser.email) {
-                recordVisit('curso', courseId, 'Curso ' + courseId, 'Acceso desde Mis Cursos');
-            }
-            window.location.href = `material-page-id.html?id=${courseId}`;
-        } catch(e) {
-            console.error("Error intentando acceder al curso:", e);
-            showNotif("Error al cargar", "No se pudo preparar el curso, intente nuevamente.", "error");
-        }
-    }
-
-    async function recordVisit(visitType, itemId, itemName, details = '') {
-        if (!window.currentUser || !window.currentUser.email) return;
-        const email = window.currentUser.email.toLowerCase();
-        try {
-            const params = new URLSearchParams();
-            params.append('action', 'record_visit');
-            params.append('email', email);
-            params.append('visitType', visitType);
-            params.append('itemId', itemId);
-            params.append('itemName', itemName);
-            params.append('details', details);
-            const response = await fetch(SCRIPT_URL, { method: 'POST', body: params, headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
-            const result = await response.json();
-        } catch (e) { console.error('Error al registrar visita:', e); }
-    }
-
     function toggleLike(btn){
-        const activeUser = window.currentUser || (typeof currentUser !== 'undefined' ? currentUser : null) || JSON.parse(localStorage.getItem('user') || 'null');
-        if(!activeUser){ openModal('authModal'); return; }
+        const activeUser = window.currentUser || JSON.parse(localStorage.getItem('user') || 'null');
+        if(!activeUser){ return; }
         window.currentUser = activeUser;
-        if (typeof currentUser !== 'undefined') currentUser = activeUser;
         const id = btn.dataset.id;
         if(!Array.isArray(activeUser.likedCourses)) { activeUser.likedCourses = []; }
         const span = btn.querySelector('.like-count');
@@ -1336,50 +948,24 @@
             btn.classList.remove('liked', 'text-red-500');
             btn.classList.add('text-slate-400');
             span.innerText = Math.max(0, currentLikes - 1);
-            if(globalStats) globalStats[`${id}_likes`] = Math.max(0, currentLikes - 1);
         } else {
             activeUser.likedCourses.push(id);
             ping('update_stat', `${id}_likes`);
             btn.classList.add('liked', 'text-red-500');
             btn.classList.remove('text-slate-400');
             span.innerText = currentLikes + 1;
-            if(globalStats) globalStats[`${id}_likes`] = currentLikes + 1;
         }
-        if(activeUser.email) { dbUsers[activeUser.email.toLowerCase()] = JSON.stringify(activeUser); }
         localStorage.setItem('user', JSON.stringify(activeUser));
-        updateAllUI();
-        syncUserProgressToExcel().then(() => { console.log('✅ Like sincronizado correctamente'); }).catch(err => { console.error('❌ Error al sincronizar like:', err); });
-        document.querySelectorAll(`.like-btn[data-id="${id}"]`).forEach(otherBtn => {
-            if(otherBtn !== btn){
-                if(activeUser.likedCourses.includes(id)){
-                    otherBtn.classList.add('liked', 'text-red-500');
-                    otherBtn.classList.remove('text-slate-400');
-                } else {
-                    otherBtn.classList.remove('liked', 'text-red-500');
-                    otherBtn.classList.add('text-slate-400');
-                }
-                const otherSpan = otherBtn.querySelector('.like-count');
-                if(otherSpan) otherSpan.innerText = span.innerText;
-            }
-        });
+        syncUserProgressToExcel();
     }
 
-    function rateCourse(courseId,rating,navigate=true){
-        const activeUser = window.currentUser || (typeof currentUser !== 'undefined' ? currentUser : null) || JSON.parse(localStorage.getItem('user') || 'null');
-        if(!activeUser){ openModal('authModal'); return; }
+    function rateCourse(courseId,rating){
+        const activeUser = window.currentUser || JSON.parse(localStorage.getItem('user') || 'null');
+        if(!activeUser){ return; }
         if(!activeUser.ratings) activeUser.ratings={};
         activeUser.ratings[courseId]=rating;
         window.currentUser = activeUser;
-        if (typeof currentUser !== 'undefined') currentUser = activeUser;
         localStorage.setItem('user',JSON.stringify(activeUser));
-        if(activeUser.email) {
-            const emailKey = activeUser.email.toLowerCase();
-            let userObj = dbUsers[emailKey];
-            if (typeof userObj === 'string') { try { userObj = JSON.parse(userObj); } catch (e) { userObj = {}; } }
-            userObj = userObj || {};
-            userObj.ratings = activeUser.ratings;
-            dbUsers[emailKey]=JSON.stringify(userObj);
-        }
         syncUserProgressToExcel();
         calculateCourseRatings();
         renderMisCourses();
@@ -1387,14 +973,11 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-        console.log('🚀 Inicializando Mis Cursos (solo cursos con Acceso = SÍ)...');
-        if(window.currentUser) { console.log('👤 Usuario detectado:', window.currentUser.email); } else { console.log('⚠️ No hay usuario logueado'); }
         setTimeout(async () => {
             await loadCoursesFromSheet();
             ping('update_stat', 'visitas_mis_cursos');
         }, 200);
         if(window.lucide) lucide.createIcons();
-        hideFloatingBackBtn();
     });
 </script>
 <script src="js/auth.js"></script>
