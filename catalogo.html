@@ -815,6 +815,72 @@
             color: #ffffff !important;
             border: 1px solid #0891b2 !important;
         }
+
+        /* ==========================================
+           BADGE OFERTA ESPECIAL - ESTILO LLAMATIVO
+           ========================================== */
+        .badge-oferta {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: #ffffff;
+            font-size: 0.55rem;
+            font-weight: 900;
+            padding: 0.15rem 0.6rem;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(238, 90, 36, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.15);
+            animation: oferta-pulse 1.5s ease-in-out infinite;
+            display: inline-block;
+            backdrop-filter: blur(4px);
+            white-space: nowrap;
+        }
+        
+        @keyframes oferta-pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(238, 90, 36, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.15);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 35px rgba(238, 90, 36, 0.8), inset 0 0 25px rgba(255, 255, 255, 0.25);
+            }
+        }
+
+        .badge-oferta i {
+            margin-right: 0.2rem;
+        }
+
+        /* Versión modo claro */
+        body.light-mode .badge-oferta {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 25px rgba(238, 90, 36, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Contenedor de badges superiores */
+        .course-card .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            align-items: center;
+        }
+
+        /* Badge de descuento 50% en el precio */
+        .badge-descuento {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: #ffffff;
+            font-size: 0.5rem;
+            font-weight: 900;
+            padding: 0.1rem 0.4rem;
+            border-radius: 9999px;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-left: 0.3rem;
+        }
     </style>
 
 
@@ -1160,7 +1226,7 @@ let cursoSeleccionado = null;
 let tasaBCV = 0;
 let cursoPrecioUSD = 0;
 let tasaBCVGlobal = null;
-let isFreeCourse = false; // Variable para saber si el curso es gratuito
+let isFreeCourse = false;
 
 const ADMIN_EMAILS = ['pablocdno@gmail.com', 'pablocedeno@gmail.com'];
 const VENEZUELA_FLAG_URL = 'https://kimi-web-img.kimi.ai/img/uxwing.com/f24e2335a62518177fba5ade4992594201597458.png';
@@ -1463,12 +1529,10 @@ async function manualEnrollStudent(event) {
 // FUNCIONES DE CELEBRACIÓN (CONFETI + APLAUSOS)
 // ==========================================
 function celebrarCompra() {
-    // Reproducir aplausos
     const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-small-crowd-applause-443.mp3');
     audio.volume = 0.6;
     audio.play().catch(e => console.log('No se pudo reproducir el audio.'));
 
-    // Lanzar confeti desde la parte inferior
     confetti({
         particleCount: 150,
         spread: 80,
@@ -1501,7 +1565,6 @@ function celebrarCompra() {
 function mostrarModalConfirmacionCompra(esGratis = false) {
     isFreeCourse = esGratis;
     
-    // Actualizar el contenido del modal según el tipo de curso
     const titulo = document.getElementById('modalConfirmacionTitulo');
     const mensaje = document.getElementById('modalConfirmacionMensaje');
     const submensaje = document.getElementById('modalConfirmacionSubmensaje');
@@ -1519,17 +1582,12 @@ function mostrarModalConfirmacionCompra(esGratis = false) {
         felicidades.innerHTML = '<i class="fas fa-gift"></i><span>🎊 ¡Felicidades por tu compra!</span>';
     }
     
-    // Mostrar el modal SIN confeti ni aplausos aún
     openModal('modalConfirmacionCompra');
 }
 
 function cerrarModalConfirmacion() {
     closeModal('modalConfirmacionCompra');
-    
-    // AHORA SÍ: lanzar confeti y aplausos al hacer clic en Aceptar
     celebrarCompra();
-    
-    // Recargar datos y aplicar filtros
     loadData();
     applyFilters();
     
@@ -1616,16 +1674,10 @@ async function confirmarCompra() {
         const response = await fetch(SCRIPT_URL, { method: 'POST', body: formData });
         const result = await response.json();
         if (result.status === 'success') {
-            // Cerrar el modal de compra
             cerrarModalCompra();
-            
-            // Guardar estado local
             const key = currentUser.email.toLowerCase() + '|' + cursoNombre;
             dbUserPaymentStatus[key] = 'Pendiente';
-            
-            // Mostrar modal de confirmación (sin confeti todavía) - curso de pago
             mostrarModalConfirmacionCompra(false);
-            
         } else {
             mensaje.classList.remove('hidden');
             mensaje.className = 'mt-3 text-center text-sm text-red-400';
@@ -1644,7 +1696,7 @@ async function confirmarCompra() {
 }
 
 // ==========================================
-// CURSOS GRATIS - Ahora con modal de confirmación
+// CURSOS GRATIS
 // ==========================================
 async function enrollFreeCourse(courseId, courseName) {
     if (!currentUser || !currentUser.email) { openModal('authModal'); return; }
@@ -1671,8 +1723,6 @@ async function enrollFreeCourse(courseId, courseName) {
         const result = await response.json();
         if (result.status === 'success') {
             hideLoadingToast();
-            
-            // Actualizar datos locales
             if (!currentUser.accessedCursos) currentUser.accessedCursos = [];
             if (!currentUser.accessedCursos.includes(parseInt(courseId))) {
                 currentUser.accessedCursos.push(parseInt(courseId));
@@ -1680,10 +1730,7 @@ async function enrollFreeCourse(courseId, courseName) {
             localStorage.setItem('user', JSON.stringify(currentUser));
             dbUserPaymentStatus[key] = 'Verificado';
             dbUserAccessStatus[key] = 'SÍ';
-            
-            // Mostrar modal de confirmación (sin confeti todavía) - curso gratuito
             mostrarModalConfirmacionCompra(true);
-            
         } else {
             hideLoadingToast();
             showNotif('Error', result.message || 'No se pudo completar la inscripción.', 'error');
@@ -1790,6 +1837,15 @@ function generateCourseCard(course) {
     const acceso = dbUserAccessStatus[key] || 'NO';
     const isAccessGranted = (acceso === 'SÍ' || acceso === 'SI' || acceso === 'TRUE' || acceso === 'true' || acceso === true);
     
+    // ==========================================
+    // DETECTAR OFERTA ESPECIAL (50% DESCUENTO)
+    // Curso online con precio menor a $7
+    // El precio original es el doble del actual
+    // ==========================================
+    const isOnline = courseType.toLowerCase() === 'online';
+    const isOffer = isOnline && coursePrice > 0 && coursePrice < 7;
+    const priceOriginal = isOffer ? coursePrice * 2 : coursePrice; // 50% descuento = original es el doble
+    
     let estadoClase = '';
     let badgeEstadoHTML = '';
     let botonHTML = '';
@@ -1843,16 +1899,43 @@ function generateCourseCard(course) {
         }).join('');
     }
 
+    // Badge de OFERTA ESPECIAL - se muestra en la esquina superior izquierda
+    let ofertaBadgeHTML = '';
+    if (isOffer) {
+        ofertaBadgeHTML = `<span class="badge-oferta"><i class="fas fa-bolt"></i> 50% OFF</span>`;
+    }
+
     const tasaActual = tasaBCVGlobal || 49.50;
     const precioBs = coursePrice * tasaActual;
     const precioBsFormateado = `Bs. ${precioBs.toFixed(2)}`;
+    const precioOriginalBs = priceOriginal * tasaActual;
+    const precioOriginalBsFormateado = `Bs. ${precioOriginalBs.toFixed(2)}`;
 
-    const priceTag = coursePrice === 0 ? 
-        '<span class="text-[#2db8ce] font-extrabold italic text-lg">GRATIS</span>' : 
-        `<div class="flex flex-col items-end">
-            <span class="text-lg font-black text-slate-800">${courseCurrency}${coursePrice.toFixed(2)}</span>
-            <span class="precio-bs mt-0.5"><img src="${VENEZUELA_FLAG_URL}" alt="🇻🇪" style="width:16px;height:11px;object-fit:cover;border-radius:2px;display:inline-block;vertical-align:middle;margin-right:4px;box-shadow:0 1px 2px rgba(0,0,0,0.2);">${precioBsFormateado}</span>
-        </div>`;
+    // Precio con efecto de tachado si está en oferta (50% descuento)
+    let priceTag = '';
+    if (coursePrice === 0) {
+        priceTag = '<span class="text-[#2db8ce] font-extrabold italic text-lg">GRATIS</span>';
+    } else if (isOffer) {
+        // Precio original tachado + precio con descuento destacado
+        priceTag = `
+            <div class="flex flex-col items-end">
+                <div class="flex items-center gap-2">
+                    <span class="text-xs text-slate-500 line-through">${courseCurrency}${priceOriginal.toFixed(2)}</span>
+                    <span class="badge-descuento">-50%</span>
+                </div>
+                <span class="text-lg font-black text-red-500">${courseCurrency}${coursePrice.toFixed(2)}</span>
+                <span class="precio-bs mt-0.5"><img src="${VENEZUELA_FLAG_URL}" alt="🇻🇪" style="width:16px;height:11px;object-fit:cover;border-radius:2px;display:inline-block;vertical-align:middle;margin-right:4px;box-shadow:0 1px 2px rgba(0,0,0,0.2);">${precioBsFormateado}</span>
+                <span class="text-[8px] text-slate-500 line-through mt-0.5">${precioOriginalBsFormateado}</span>
+            </div>
+        `;
+    } else {
+        priceTag = `
+            <div class="flex flex-col items-end">
+                <span class="text-lg font-black text-slate-800">${courseCurrency}${coursePrice.toFixed(2)}</span>
+                <span class="precio-bs mt-0.5"><img src="${VENEZUELA_FLAG_URL}" alt="🇻🇪" style="width:16px;height:11px;object-fit:cover;border-radius:2px;display:inline-block;vertical-align:middle;margin-right:4px;box-shadow:0 1px 2px rgba(0,0,0,0.2);">${precioBsFormateado}</span>
+            </div>
+        `;
+    }
 
     const likes = globalStats[`curso-${courseId}_likes`] || 0;
     const vistas = globalStats[`curso-${courseId}_vistas`] || 0;
@@ -1911,6 +1994,7 @@ function generateCourseCard(course) {
                 <span class="px-2.5 py-1 text-[9px] font-black uppercase rounded-md ${courseType.toLowerCase() === 'manual' ? 'bg-blue-600/90 text-white border border-blue-400/60 shadow-lg shadow-blue-500/20' : 'bg-slate-900/70 text-white'}">${courseType}</span>
                 ${courseCategory ? `<span class="px-2.5 py-1 text-[9px] font-black uppercase rounded-md bg-slate-900/70 text-white">${courseCategory}</span>` : ''}
                 ${badgesHTML}
+                ${ofertaBadgeHTML}
             </div>
             <div class="absolute top-3 right-3 bg-slate-900/70 text-[#2db8ce] text-[10px] font-black px-2 py-1 rounded-md flex items-center gap-1">
                 <i class="fas fa-star text-yellow-400"></i> ${avgRating}
