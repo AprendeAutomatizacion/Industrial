@@ -1298,9 +1298,6 @@
                     var locked = !this.isLessonUnlocked(lesson);
                     var isCurr = this.currentId === lesson.id;
                     
-                    // ============================================================
-                    // CORRECCIÓN: Generar el nombre del sub-módulo correctamente
-                    // ============================================================
                     var displayLabel = '';
                     var displayTopic = '';
                     
@@ -1308,17 +1305,14 @@
                         displayLabel = 'INTRODUCCIÓN';
                         displayTopic = lesson.title;
                     } else if (lesson.isSubmodule) {
-                        // Buscar el módulo padre
                         var parentLesson = COURSE_DATA.find(function(l) { return l.id === lesson.parentId; });
                         if (parentLesson) {
-                            // Obtener el nombre base del padre (ej: "Aplicaciones" de "Lección 7: Aplicaciones")
                             var parentTitle = parentLesson.title || '';
                             var parentBaseName = parentTitle;
                             if (parentTitle.indexOf(':') !== -1) {
                                 parentBaseName = parentTitle.split(':')[1].trim();
                             }
                             
-                            // CORRECCIÓN: Mapeo de palabras plurales a singulares con tilde
                             var pluralToSingular = {
                                 'aplicaciones': 'Aplicación',
                                 'lecciones': 'Lección',
@@ -1348,35 +1342,18 @@
                             var singularName = parentBaseName;
                             var lowerName = parentBaseName.toLowerCase();
                             
-                            // Verificar si la palabra está en el mapeo
                             if (pluralToSingular[lowerName]) {
                                 singularName = pluralToSingular[lowerName];
                             } else if (lowerName.endsWith('es') && lowerName.length > 3) {
-                                // Palabras que terminan en 'es' (ej: "coches" → "coche", "claves" → "clave")
-                                var baseWithoutEs = lowerName.slice(0, -2);
-                                // Si termina en 'c' + 'es' → 'c' + 'e' (ej: "coches" → "coche")
-                                // Si termina en 'l' + 'es' → 'l' + 'e' (ej: "manuales" → "manuale" no es correcto)
-                                // Mejor usar el mapeo o mantener la palabra original
-                                if (baseWithoutEs.length > 1) {
-                                    // Mantener la palabra original pero sin la 's' final
-                                    singularName = parentBaseName.slice(0, -1);
-                                }
+                                singularName = parentBaseName.slice(0, -1);
                             } else if (lowerName.endsWith('s') && lowerName.length > 2) {
-                                // Palabras que terminan en 's' (ej: "cosas" → "cosa")
                                 var baseWithoutS = lowerName.slice(0, -1);
-                                // Verificar si la palabra sin 's' termina en 'a', 'e', 'i', 'o', 'u'
                                 var lastChar = baseWithoutS.slice(-1);
                                 if (['a', 'e', 'i', 'o', 'u'].indexOf(lastChar) !== -1) {
-                                    // Si la palabra sin 's' termina en vocal, mantenerla
                                     singularName = parentBaseName.slice(0, -1);
-                                } else {
-                                    // Si termina en consonante, puede ser una palabra como "paraguas" (excepción)
-                                    // Mantener la palabra original
-                                    singularName = parentBaseName;
                                 }
                             }
                             
-                            // Buscar el número del sub-módulo dentro de su padre
                             var parentSubs = parentLesson.submodules || [];
                             var subIndex = parentSubs.findIndex(function(s) { return s.id === lesson.id; }) + 1;
                             
@@ -2411,6 +2388,9 @@
                 return '🥉'; 
             },
 
+            // ============================================================
+            // generateCertificate - CORREGIDO: INCLUYE LA INTRODUCCIÓN
+            // ============================================================
             generateCertificate: function() {
                 var auth = JSON.parse(localStorage.getItem(STORAGE_KEYS.auth) || 'null');
                 if (!auth || !CURRENT_COURSE) { this.showModal('Error', 'No hay sesión activa.', 'error'); return; }
@@ -2421,15 +2401,39 @@
 
                 if (percent < 100) { this.showModal('Curso Incompleto', 'Tu progreso es ' + percent + '%. Completa el 100% para generar el certificado.', 'error'); return; }
 
+                // ============================================================
+                // CORRECCIÓN: Incluir la introducción (id === 0) en el promedio
+                // ============================================================
                 var allScores = [];
+                
+                // 1. Incluir la introducción si tiene quiz
+                var introLesson = COURSE_DATA.find(function(l) { return l.id === 0; });
+                if (introLesson && introLesson.quiz && introLesson.quiz.length > 0) {
+                    var introScore = this.quizScores[0];
+                    if (introScore !== undefined) {
+                        allScores.push(introScore);
+                    }
+                }
+                
+                // 2. Incluir todos los módulos principales (id > 0)
                 COURSE_DATA.forEach(function(l) {
-                    if (l.isSubmodule && this.quizScores[l.id] !== undefined) {
-                        allScores.push(this.quizScores[l.id]);
-                    } else if (!l.isSubmodule && l.id > 0 && this.quizScores[l.id] !== undefined) {
+                    if (!l.isSubmodule && l.id > 0 && this.quizScores[l.id] !== undefined) {
                         allScores.push(this.quizScores[l.id]);
                     }
                 }, this);
+                
+                // 3. Incluir sub-módulos
+                COURSE_DATA.forEach(function(l) {
+                    if (l.isSubmodule && this.quizScores[l.id] !== undefined) {
+                        allScores.push(this.quizScores[l.id]);
+                    }
+                }, this);
+
                 var promedio = allScores.length > 0 ? Math.round(allScores.reduce(function(a, b) { return a + b; }, 0) / allScores.length) : 100;
+
+                // ============================================================
+                // FIN DE LA CORRECCIÓN
+                // ============================================================
 
                 var cedulaRaw = auth.cedula || '';
                 if (!cedulaRaw || cedulaRaw === 'N/A') {
@@ -2458,6 +2462,8 @@
 
                 console.log('🎓 ID calculado:', certId);
                 console.log('🎓 Cédula usada:', cedulaRaw, '→', ciNum);
+                console.log('📊 Promedio calculado (incluyendo introducción):', promedio);
+                console.log('📊 Scores considerados:', allScores);
 
                 showSyncIndicator('Generando certificado...', 'loading');
 
