@@ -216,9 +216,9 @@
         body.light-mode header p { color: var(--aula-text-secondary) !important; text-shadow: none !important; }
         body.light-mode header .absolute.inset-0 img { opacity: 0.10 !important; filter: saturate(0.4); }
         body.light-mode .hero-badge { border-width: 1px; }
-        body.light-mode .hero-badge.bg-blue-500\/20 { background: rgba(8, 145, 178, 0.10) !important; border-color: rgba(8, 145, 178, 0.20) !important; color: #0891b2 !important; }
-        body.light-mode .hero-badge.bg-emerald-500\/20 { background: rgba(16, 185, 129, 0.10) !important; border-color: rgba(16, 185, 129, 0.20) !important; color: #10b981 !important; }
-        body.light-mode .hero-badge.bg-orange-500\/20 { background: rgba(245, 158, 11, 0.10) !important; border-color: rgba(245, 158, 11, 0.20) !important; color: #f59e0b !important; }
+        body.light-mode .hero-badge.bg-blue-500/20 { background: rgba(8, 145, 178, 0.10) !important; border-color: rgba(8, 145, 178, 0.20) !important; color: #0891b2 !important; }
+        body.light-mode .hero-badge.bg-emerald-500/20 { background: rgba(16, 185, 129, 0.10) !important; border-color: rgba(16, 185, 129, 0.20) !important; color: #10b981 !important; }
+        body.light-mode .hero-badge.bg-orange-500/20 { background: rgba(245, 158, 11, 0.10) !important; border-color: rgba(245, 158, 11, 0.20) !important; color: #f59e0b !important; }
 
         .glass-card {
             background: var(--glass-bg);
@@ -1083,7 +1083,7 @@
 
     function getAchievementIcon(score) {
         if (score === undefined || score === null || score < 70) return '📚';
-        if (score === 100) return '🏆';
+        if (score === 100) return '🏆';  // 🏆 para 100%
         if (score >= 90) return '🥇';
         if (score >= 80) return '🥈';
         return '🥉';
@@ -1481,6 +1481,9 @@
         return 5;
     }
 
+    // ==========================================
+    // FUNCIÓN PRINCIPAL DE RENDERIZADO
+    // ==========================================
     function renderUserProgress() {
         const coursesContainer = document.getElementById('individualCourseProgressCards');
         const subjectsContainer = document.getElementById('individualSubjectProgressCards');
@@ -1533,6 +1536,15 @@
                 moduleNames = Array.from({length: progData.total || totalLecciones}, (_, i) => `Módulo ${i + 1}`);
             }
             
+            // CORRECCIÓN: Función para obtener el icono según la calificación
+            function getMedalIcon(score) {
+                if (score === undefined || score === null || score < 70) return '';
+                if (score === 100) return '🏆';  // 🏆 para 100%
+                if (score >= 90) return '🥇';
+                if (score >= 80) return '🥈';
+                return '🥉';
+            }
+            
             // Generar píldoras de progreso
             const lessonPillsHtml = moduleNames.map((moduleName, index) => {
                 const score = scores[index];
@@ -1549,8 +1561,9 @@
                 const isIntro = index === 0 && (moduleName.toLowerCase().includes('contenido') || moduleName.toLowerCase().includes('introduccion'));
                 const simpleTitle = isIntro ? "Intro" : `Lección ${index}`;
                 const abbreviatedTitle = isIntro ? "Intro" : `Lec${index}`;
+                // CORRECCIÓN: Usar la nueva función para incluir 🏆
                 const medalIcon = (score !== undefined && score !== null && score >= 70) ? 
-                    (score === 100 ? '🏆' : score >= 90 ? '🥇' : score >= 80 ? '🥈' : '🥉') : '';
+                    getMedalIcon(score) : '';
                 const finalIcon = isIntro ? '<i class="fas fa-book" style="color: var(--text-muted);"></i>' : medalIcon;
                 return `<div class="flex flex-col items-center gap-1" title="${moduleName}">
                     <div class="lesson-pill w-full px-2 py-1.5 text-center rounded-lg ${pillClass} text-[10px] font-black uppercase tracking-wider">
@@ -1590,13 +1603,22 @@
                 modulesHtml += `<div class="module-row ${stateModifier} flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 p-3 sm:p-4 rounded-xl border ${stateClass}"><span class="tracking-wide text-xs sm:text-sm">${displayModuleName}</span><span class="module-status text-center sm:text-right w-fit sm:w-auto">${stateText}</span></div>`;
             });
             
+            // CORRECCIÓN: Icono principal con 🏆 para 100%
+            let mainIcon = '📚';
+            if (coursePercentage === 100) {
+                if (avgScore === 100) mainIcon = '🏆';
+                else if (avgScore >= 90) mainIcon = '🥇';
+                else if (avgScore >= 80) mainIcon = '🥈';
+                else if (avgScore >= 70) mainIcon = '🥉';
+            }
+            
             const cardHtml = `
                 <div class="course-progress-card" data-course-id="${courseId}">
                     <div class="flex items-center justify-between mb-6 pb-4" style="border-bottom: 1px solid var(--border-default);">
                         <h3 class="course-title font-black uppercase tracking-tighter text-sm flex items-center gap-3">
                             <i class="fas fa-book-open text-blue-200"></i> ${courseNombre}
                         </h3>
-                        <span class="text-xl">${coursePercentage === 100 ? (avgScore >= 90 ? '🥇' : avgScore >= 80 ? '🥈' : avgScore >= 70 ? '🥉' : '📚') : '📚'}</span>
+                        <span class="text-xl">${mainIcon}</span>
                     </div>
                     
                     <div class="progress-summary-card rounded-xl p-5 shadow-inner mb-6">
